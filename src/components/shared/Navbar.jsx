@@ -20,7 +20,7 @@ export default function Navbar() {
 //   const handleSignOut = async () => {
 //     await authClient.signOut();
 //   };
- const user = "something"
+ const user = null
 
   return (
     <nav className="sticky top-0 z-40 w-full backdrop-blur-lg">
@@ -57,7 +57,7 @@ export default function Navbar() {
             </svg>
           </button>
           <div className="flex items-center gap-3">
-            <Image src={logo} alt="ArenaX Logo" width={80} height={80} />
+            <Image src={logo} alt="ArenaX Logo" width={60} height={60} />
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">
