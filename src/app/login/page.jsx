@@ -15,6 +15,13 @@ import {
   YoutubeLogo,
   TwitterLogoIcon,
 } from "@phosphor-icons/react";
+import { clashDisplay } from "../localFonts";
+import { Bebas_Neue } from "next/font/google";
+
+const bebas = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const SOCIALS = [
   {
@@ -48,11 +55,11 @@ export default function LoginPage() {
           {/* Logo */}
           <div className="flex items-center gap-2 mb-2">
             <Image src={logo} alt="ArenaX Logo" width={40} height={40} />
-            <span className="font-semibold text-lg">ArenaX</span>
+            <span className={`font-semibold text-lg`}>ArenaX</span>
           </div>
 
           <div>
-            <h1 className="text-3xl font-bold">Sign in</h1>
+            <h1 className={`text-3xl font-extrabold ${bebas.className}`}>Sign in</h1>
             <p className="text-sm text-gray-500 mt-1">
               Book your next session in seconds.
             </p>
@@ -169,7 +176,7 @@ export default function LoginPage() {
           </p>
 
           {/* Headline */}
-          <h2 className="text-white text-3xl font-extrabold leading-tight mb-4">
+          <h2 className={`text-white text-3xl font-extrabold leading-wider mb-4 ${bebas.className}`}>
             Your game starts here.
           </h2>
 

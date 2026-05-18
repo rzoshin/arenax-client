@@ -1,10 +1,14 @@
+"use client";
+
+import { FacebookLogoIcon, InstagramLogoIcon, TwitterLogoIcon, YoutubeLogoIcon } from "@phosphor-icons/react";
+
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-400 px-6 md:px-16 py-16">
+    <footer className="bg-[#111827] text-gray-400 px-6 md:px-16 py-16">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <h1 className="text-6xl md:text-7xl font-bold text-white">
-            Wanderlust
+            Arena<span className="text-[#00E5A0]">X</span>
           </h1>
           <p className="mt-4 max-w-xl">
             Your gateway to extraordinary travel experiences around the world.
@@ -68,13 +72,14 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm">
-            © 2026 Wanderlust. All rights reserved.
+            © 2026 ArenaX. All rights reserved.
           </p>
 
           <div className="flex gap-5 mt-4 md:mt-0 text-white text-lg">
-            <span className="cursor-pointer">X</span>
-            <span className="cursor-pointer">in</span>
-            <span className="cursor-pointer">◎</span>
+            <span className="cursor-pointer"><TwitterLogoIcon /> </span>
+            <span className="cursor-pointer"><InstagramLogoIcon /></span>
+            <span className="cursor-pointer"><YoutubeLogoIcon /></span>
+            <span className="cursor-pointer"><FacebookLogoIcon/></span>
           </div>
         </div>
       </div>
