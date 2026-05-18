@@ -20,7 +20,7 @@ export default function Navbar() {
 //   const handleSignOut = async () => {
 //     await authClient.signOut();
 //   };
- const user = null
+ const user = 'something';
 
   return (
     <nav className="sticky top-0 z-40 bg-[#111827] w-full backdrop-blur-lg">

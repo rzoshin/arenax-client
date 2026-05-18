@@ -11,7 +11,7 @@ import {
   Button,
 } from "@heroui/react";
 import React from "react";
-import { myFont } from "../localFonts";
+import toast from "react-hot-toast";
 
 const AddFacility = () => {
   const onSubmit = async (e) => {
@@ -31,25 +31,26 @@ const AddFacility = () => {
     });
 
     const data = await res.json();
+    toast.success("Facility added successfully!");
 
     console.log(data);
   };
   return (
     <div className="max-w-7xl mx-auto py-10">
-      <h1 className={`${myFont.className} text-5xl`}>Add New Facility</h1>
+      <h1 className="text-5xl">Add New Facility</h1>
       <div className="mt-8">
         <form
           onSubmit={onSubmit}
-          className="p-10 space-y-8 border border-gray-300 shadow-sm"
+          className="p-10 space-y-8 border border-gray-300 shadow-sm bg-[#1C2438] rounded-2xl"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
             {/* Facility Name */}
             <div className="md:col-span-2">
               <TextField name="facilityName" isRequired>
-                <Label>Facility Name</Label>
+                <Label className="text-[#E2E8F0]">Facility Name</Label>
                 <Input
                   placeholder="ArenaX Football Turf"
-                  className="rounded-2xl"
+                  className="rounded-2xl bg-[#111827] text-white"
                 />
                 <FieldError />
               </TextField>
@@ -63,9 +64,9 @@ const AddFacility = () => {
                 className="w-full"
                 placeholder="Select facility type"
               >
-                <Label>Facility Type</Label>
+                <Label className="text-[#E2E8F0]">Facility Type</Label>
 
-                <Select.Trigger className="rounded-2xl">
+                <Select.Trigger className="rounded-2xl bg-[#111827] text-white">
                   <Select.Value />
                   <Select.Indicator />
                 </Select.Trigger>
@@ -113,32 +114,32 @@ const AddFacility = () => {
 
             {/* Location */}
             <TextField name="location" isRequired>
-              <Label>Location</Label>
-              <Input placeholder="Dhanmondi, Dhaka" className="rounded-2xl" />
+              <Label className="text-[#E2E8F0]">Location</Label>
+              <Input placeholder="Dhanmondi, Dhaka" className="rounded-2xl bg-[#111827] text-white" />
               <FieldError />
             </TextField>
 
             {/* Price Per Hour */}
             <TextField name="pricePerHour" type="number" isRequired>
-              <Label>Price Per Hour (৳)</Label>
-              <Input type="number" placeholder="4500" className="rounded-2xl" />
+              <Label className="text-[#E2E8F0]">Price Per Hour (৳)</Label>
+              <Input type="number" placeholder="4500" className="rounded-2xl bg-[#111827] text-white" />
               <FieldError />
             </TextField>
 
             {/* Capacity */}
             <TextField name="capacity" type="number" isRequired>
-              <Label>Capacity</Label>
-              <Input type="number" placeholder="14" className="rounded-2xl" />
+              <Label className="text-[#E2E8F0]">Capacity</Label>
+              <Input type="number" placeholder="14" className="rounded-2xl bg-[#111827] text-white" />
               <FieldError />
             </TextField>
 
             {/* Available Time Slots */}
             <div className="md:col-span-2">
               <TextField name="availableTimeSlots" isRequired>
-                <Label>Available Time Slots</Label>
+                <Label className="text-[#E2E8F0]">Available Time Slots</Label>
                 <Input
                   placeholder="06:00 AM - 07:00 AM, 07:00 AM - 08:00 AM"
-                  className="rounded-2xl"
+                  className="rounded-2xl bg-[#111827] text-white"
                 />
                 <FieldError />
               </TextField>
@@ -147,11 +148,11 @@ const AddFacility = () => {
             {/* Image URL */}
             <div className="md:col-span-2">
               <TextField name="image" isRequired>
-                <Label>Image URL</Label>
+                <Label className="text-[#E2E8F0]">Image URL</Label>
                 <Input
                   type="url"
                   placeholder="https://i.ibb.co.com/example.jpg"
-                  className="rounded-2xl"
+                  className="rounded-2xl bg-[#111827] text-white"
                 />
                 <FieldError />
               </TextField>
@@ -160,10 +161,10 @@ const AddFacility = () => {
             {/* Description */}
             <div className="md:col-span-2">
               <TextField name="description" isRequired>
-                <Label>Description</Label>
+                <Label className="text-[#E2E8F0]">Description</Label>
                 <TextArea
                   placeholder="Describe the sports facility..."
-                  className="rounded-3xl"
+                  className="rounded-3xl bg-[#111827] text-white"
                 />
                 <FieldError />
               </TextField>
@@ -176,8 +177,8 @@ const AddFacility = () => {
                 defaultValue="owner@gmail.com"
                 isReadOnly
               >
-                <Label>Owner Email</Label>
-                <Input className="rounded-2xl" />
+                <Label className="text-[#E2E8F0]">Owner Email</Label>
+                <Input className="rounded-2xl bg-[#111827] text-white" />
               </TextField>
             </div>
           </div>
@@ -185,7 +186,7 @@ const AddFacility = () => {
           <Button
             type="submit"
             variant="outline"
-            className="rounded-none w-full bg-cyan-500 text-white"
+            className="rounded-none w-full bg-[#00E5A0] text-black font-semibold"
           >
             Add Facility
           </Button>
@@ -195,4 +196,4 @@ const AddFacility = () => {
   );
 };
 
-export default AddDestination;
+export default AddFacility;
