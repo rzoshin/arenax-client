@@ -1,15 +1,19 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  darkMode: "class", // next-themes injects the "dark" class on <html>
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        geist: ["var(--font-geist-sans)"],
-        mono: ["var(--font-geist-mono)"],
-        sora: ["var(--font-sora)"],
-        bebasNeue: ["var(--font-bebas-neue)"],
+      colors: {
+        base:    "rgb(var(--color-bg-base) / <alpha-value>)",
+        card:    "rgb(var(--color-bg-card) / <alpha-value>)",
+        input:   "rgb(var(--color-bg-input) / <alpha-value>)",
+        price:   "rgb(var(--color-bg-price) / <alpha-value>)",
+        border:  "rgb(var(--color-border) / <alpha-value>)",
+        primary: "rgb(var(--color-text-primary) / <alpha-value>)",
+        muted:   "rgb(var(--color-text-muted) / <alpha-value>)",
+        accent:  "rgb(var(--color-accent) / <alpha-value>)",
+        danger:  "rgb(var(--color-danger) / <alpha-value>)",
       },
     },
   },

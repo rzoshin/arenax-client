@@ -4,7 +4,7 @@ import { FacebookLogoIcon, InstagramLogoIcon, TwitterLogoIcon, YoutubeLogoIcon }
 
 const Footer = () => {
   return (
-    <footer className="bg-[#111827] text-gray-400 px-6 md:px-16 py-16">
+    <footer className="bg-[#0A0E1A] text-gray-400 px-6 md:px-16 py-16">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <h1 className="text-6xl md:text-7xl font-bold text-white">

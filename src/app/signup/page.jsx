@@ -5,25 +5,55 @@ import {
   Label,
   TextField,
   InputGroup,
+  Form,
 } from "@heroui/react";
 import Image from "next/image";
 import logo from "../../../public/assets/ArenaX.png";
-import { EnvelopeIcon, ImageIcon, LockIcon, UserIcon } from "@phosphor-icons/react";
-import {
-  FacebookLogoIcon,
-  InstagramLogoIcon,
-  YoutubeLogo,
-  TwitterLogoIcon,
-} from "@phosphor-icons/react";
+import { EnvelopeIcon, GoogleLogoIcon, ImageIcon, LockIcon, UserIcon, TwitterLogoIcon, YoutubeLogoIcon, FacebookLogoIcon, InstagramLogoIcon, } from "@phosphor-icons/react";
+
+import { createAuthClient } from "better-auth/client";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
+const authClient = createAuthClient();
 
 const SOCIALS = [
   { label: "Facebook", href: "https://facebook.com/arenax", Icon: FacebookLogoIcon },
   { label: "Instagram", href: "https://instagram.com/arenax", Icon: InstagramLogoIcon },
-  { label: "YouTube", href: "https://youtube.com/@arenax", Icon: YoutubeLogo },
+  { label: "YouTube", href: "https://youtube.com/@arenax", Icon: YoutubeLogoIcon },
   { label: "Twitter / X", href: "https://twitter.com/arenax", Icon: TwitterLogoIcon },
 ];
 
 export default function RegisterPage() {
+  const onSubmit = async (e) => {
+      e.preventDefault();
+  
+      const formData = new FormData(e.currentTarget);
+      const user = Object.fromEntries(formData.entries());
+  
+      console.log(user);
+  
+      const { data, error } = await authClient.signUp.email({
+        name: user.name,// re
+        email: user.email, // required
+        password: user.password,// required
+        image: user.image, // required
+      });
+  
+      console.log(data, error);
+      if (data) {
+        toast.success("Account created successfully!");
+        redirect("/");
+      }
+      if (error) {
+        toast.error(error.message || "An error occurred during registration");
+      }
+    };
+  
+    const handleGoogleSignIn = async () => {
+      await authClient.signIn.social({
+      provider: "google",
+    });
+  }
   return (
     <div className="flex min-h-screen bg-gray-100 p-4 gap-4">
       {/* ── Left – Form ── */}
@@ -41,7 +71,7 @@ export default function RegisterPage() {
               Join 17,000+ athletes already booking on ArenaX.
             </p>
           </div>
-
+        <Form onSubmit={onSubmit} className="flex flex-col gap-4">
           {/* Full name */}
           <TextField isRequired name="name" type="text">
             <Label>Full name</Label>
@@ -128,7 +158,7 @@ export default function RegisterPage() {
           <Button className="w-full bg-[#00E5A0] text-black font-semibold" type="submit">
             Create free account
           </Button>
-
+        </Form>
           {/* Sign-in link */}
           <p className="text-sm text-gray-500 text-center">
             Already have an account?{" "}
@@ -145,22 +175,13 @@ export default function RegisterPage() {
           </div>
 
           {/* Social buttons */}
-          <div className="flex gap-3">
-            {[
-              { name: "Google", letter: "G" },
-              { name: "GitHub", letter: "GH" },
-              { name: "Facebook", letter: "f" },
-            ].map(({ name, letter }) => (
-              <Button
-                key={name}
-                aria-label={`Sign up with ${name}`}
-                variant="outline"
-                className="flex-1 h-11 rounded-xl text-xs font-medium border border-gray-200 hover:bg-gray-50"
-              >
-                {letter}
-              </Button>
-            ))}
-          </div>
+          <Button
+            onClick={handleGoogleSignIn}
+            className="w-full rounded-full"
+            variant="outline"
+          >
+             <GoogleLogoIcon />{" "}
+          </Button>
         </div>
       </div>
 

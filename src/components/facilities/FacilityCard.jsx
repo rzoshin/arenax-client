@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 import Link from "next/link";
 import { Button, Card, Chip } from "@heroui/react";
-import { ArrowUpRightIcon, MapPinAreaIcon, PinwheelIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, MapPinIcon, UsersIcon, ClockIcon } from "@phosphor-icons/react";
+
 const FacilityCard = ({ facility }) => {
   const {
     _id,
@@ -17,34 +17,96 @@ const FacilityCard = ({ facility }) => {
     availableTimeSlots,
     description,
   } = facility;
+
   return (
-    <Card className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-indigo-200 transition-all duration-300 flex flex-col">
-      <div className='relative w-full aspect-video overflow-hidden'>
+    <Card
+      className="
+        group
+        border border-[#E2E8F0] dark:border-[#1C2438]
+        bg-white dark:bg-[#111827]
+        rounded-3xl overflow-hidden
+        hover:border-[#00E5A0]/40
+        hover:shadow-2xl hover:shadow-[#00E5A0]/10
+        transition-all duration-300
+        flex flex-col
+      "
+    >
+      {/* IMAGE */}
+      <div className="relative w-full aspect-video overflow-hidden">
         <Image
-            src={image}
-            alt={facilityName}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className='rounded-xl object-cover'
-            />
-            <Chip size="sm" color="default" className='absolute left-2 top-2'>{location}</Chip>
-        </div>
-      <div className="p-5 flex flex-col gap-2 flex-1">
-        <span className="text-xs text-indigo-400 font-medium uppercase tracking-wide">
+          src={image}
+          alt={facilityName}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+        {/* Location chip */}
+        <Chip
+          size="sm"
+          className="absolute left-3 top-3 bg-white/10 backdrop-blur-md text-[#E2E8F0] border border-white/10"
+          startContent={<MapPinIcon size={14} />}
+        >
+          {location}
+        </Chip>
+
+        {/* Facility type badge */}
+        <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#00E5A0] text-[#0A0E1A] text-xs font-bold uppercase tracking-wider">
           {facilityType}
-        </span>
-        <h3 className="font-bold text-[#002f5f] text-base leading-snug line-clamp-2">
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div className="p-5 flex flex-col flex-1">
+
+        {/* Title */}
+        <h3 className="text-[#0F172A] dark:text-[#E2E8F0] text-2xl font-bold leading-snug mb-3 line-clamp-1 transition-colors duration-300">
           {facilityName}
         </h3>
-        <p>{description}</p>
-        <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-50">
-          <span className="text-sm font-medium text-gray-700">$ {pricePerHour}</span>
-          {/* <Link href={`/facilities/${id}`} className="text-xs text-gray-400"> */}
-            <Button>
+
+        {/* Description */}
+        <p className="text-[#64748B] text-sm leading-relaxed line-clamp-3 mb-5">
+          {description}
+        </p>
+
+        {/* Stats */}
+        <div className="flex items-center gap-4 mb-5">
+          <div className="flex items-center gap-2 text-[#64748B] text-sm">
+            <UsersIcon size={18} />
+            <span>{capacity} Players</span>
+          </div>
+          <div className="flex items-center gap-2 text-[#64748B] text-sm">
+            <ClockIcon size={18} />
+            <span>{availableTimeSlots?.length} Slots</span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-auto pt-5 border-t border-[#E2E8F0] dark:border-[#1C2438] flex items-center justify-between transition-colors duration-300">
+
+          {/* Price */}
+          <div>
+            <p className="text-[#94A3B8] text-xs uppercase tracking-wider mb-0.5">
+              Starting From
+            </p>
+            <h4 className="text-[#0F172A] dark:text-[#E2E8F0] text-2xl font-bold transition-colors duration-300">
+              ৳ {pricePerHour}
+              <span className="text-sm text-[#64748B] font-normal">/hour</span>
+            </h4>
+          </div>
+
+          {/* Button */}
+          <Link href={`/facilities/${_id}`}>
+            <Button
+              className="bg-[#00E5A0] text-[#0A0E1A] font-semibold rounded-xl px-5 hover:scale-105 transition-transform"
+              endContent={<ArrowUpRightIcon size={18} />}
+            >
               View Details
-              <ArrowUpRightIcon />
             </Button>
-          {/* </Link> */}
+          </Link>
         </div>
       </div>
     </Card>
@@ -52,21 +114,3 @@ const FacilityCard = ({ facility }) => {
 };
 
 export default FacilityCard;
-
-// import { ArrowDownToLine, ArrowUpRight } from "@gravity-ui/icons";
-// import { Button } from "@heroui/react";
-
-
-// const CourseCard = ({ course }) => {
-//   const levelColor = {
-//   Beginner: "bg-green-50 text-green-700 border-green-200",
-//   Intermediate: "bg-yellow-50 text-yellow-700 border-yellow-200",
-//   Advanced: "bg-red-50 text-red-700 border-red-200",
-// };
-//   const { id, title, instructor, rating, level, duration, category, image } = course;
-//   return (
-
-//   );
-// };
-
-// export default CourseCard;

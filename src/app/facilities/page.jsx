@@ -8,7 +8,7 @@ const FacilitiesPage = async () => {
   const facilities = await res.json();
 
   return (
-    <div className="bg-white py-16">
+    <div className="py-16">
 
       <div className="max-w-7xl mx-auto px-4">
 

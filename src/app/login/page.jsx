@@ -5,18 +5,18 @@ import {
   Label,
   TextField,
   InputGroup,
+  Form,
 } from "@heroui/react";
 import Image from "next/image";
 import logo from "../../../public/assets/ArenaX.png";
-import { EnvelopeIcon, LockIcon } from "@phosphor-icons/react";
-import {
-  FacebookLogoIcon,
-  InstagramLogoIcon,
-  YoutubeLogo,
-  TwitterLogoIcon,
-} from "@phosphor-icons/react";
+import { EnvelopeIcon, GoogleLogoIcon, LockIcon, YoutubeLogoIcon, FacebookLogoIcon, InstagramLogoIcon, TwitterLogoIcon, } from "@phosphor-icons/react";
 import { clashDisplay } from "../localFonts";
 import { Bebas_Neue } from "next/font/google";
+
+import { createAuthClient } from "better-auth/client";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
+const authClient = createAuthClient();
 
 const bebas = Bebas_Neue({
   subsets: ["latin"],
@@ -37,7 +37,7 @@ const SOCIALS = [
   {
     label: "YouTube",
     href: "https://youtube.com/@arenax",
-    Icon: YoutubeLogo,
+    Icon: YoutubeLogoIcon,
   },
   {
     label: "Twitter / X",
@@ -47,6 +47,35 @@ const SOCIALS = [
 ];
 
 export default function LoginPage() {
+  const onSubmit = async (e) => {
+      e.preventDefault();
+  
+      const formData = new FormData(e.currentTarget);
+      const user = Object.fromEntries(formData.entries());
+  
+      console.log(user);
+  
+      const { data, error } = await authClient.signIn.email({
+        email: user.email, // required
+        password: user.password, // required
+      });
+  
+      console.log(data, error);
+      if (data) {
+        toast.success("Logged in successfully!");
+        redirect("/");
+      }
+      if (error) {
+        // toast
+        toast.error(error.message || "An error occurred during login");
+      }
+    };
+  
+    const handleGoogleSignIn = async () => {
+      await authClient.signIn.social({
+      provider: "google",
+    });
+  }
   return (
     <div className="flex min-h-screen bg-gray-100 p-4 gap-4">
       {/* ── Left – Form ── */}
@@ -64,7 +93,7 @@ export default function LoginPage() {
               Book your next session in seconds.
             </p>
           </div>
-
+          <Form onSubmit={onSubmit} className="flex flex-col gap-4">
           {/* Email */}
           <TextField
             isRequired
@@ -107,18 +136,11 @@ export default function LoginPage() {
             </InputGroup>
           </TextField>
 
-          {/* Forgot password */}
-          <div className="flex justify-end -mt-2">
-            <a href="#" className="text-xs text-gray-500 hover:text-black hover:underline">
-              Forgot password?
-            </a>
-          </div>
-
           {/* Submit */}
           <Button className="w-full bg-[#00E5A0] text-black font-semibold" type="submit">
             Sign in
           </Button>
-
+        </Form>
           {/* Sign-up link */}
           <p className="text-sm text-gray-500 text-center">
             New to ArenaX?{" "}
@@ -135,22 +157,15 @@ export default function LoginPage() {
           </div>
 
           {/* Social buttons */}
-          <div className="flex gap-3">
-            {[
-              { name: "Google", letter: "G" },
-              { name: "GitHub", letter: "GH" },
-              { name: "Facebook", letter: "f" },
-            ].map(({ name, letter }) => (
-              <Button
-                key={name}
-                aria-label={`Sign in with ${name}`}
-                variant="outline"
-                className="flex-1 h-11 rounded-xl text-xs font-medium border border-gray-200 hover:bg-gray-50"
-              >
-                {letter}
-              </Button>
-            ))}
-          </div>
+          <div className="mx-auto w-full">
+            <Button
+            onClick={handleGoogleSignIn}
+            className="rounded-full mx-auto"
+            variant="outline"
+          >
+            <GoogleLogoIcon />{" "}
+          </Button>
+          </div> 
         </div>
       </div>
 

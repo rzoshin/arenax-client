@@ -1,2 +1,28 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
+
+  :root {
+    /* LIGHT THEME */
+    --color-bg-base:       255 255 255;   /* #FFFFFF */
+    --color-bg-card:       241 245 249;   /* #F1F5F9 */
+    --color-bg-input:      226 232 240;   /* #E2E8F0 */
+    --color-bg-price:      248 250 252;   /* #F8FAFC */
+    --color-border:        203 213 225;   /* #CBD5E1 */
+    --color-text-primary:  15  23  42;   /* #0F172A */
+    --color-text-muted:    100 116 139;   /* #64748B */
+    --color-accent:        0   229 160;   /* #00E5A0 */
+    --color-danger:        255 75  43;    /* #FF4B2B */
+  }
+
+  .dark {
+    /* DARK THEME */
+    --color-bg-base:       10  14  26;    /* #0A0E1A */
+    --color-bg-card:       17  24  39;    /* #111827 */
+    --color-bg-input:      28  36  56;    /* #1C2438 */
+    --color-bg-price:      15  23  42;    /* #0F172A */
+    --color-border:        28  36  56;    /* #1C2438 */
+    --color-text-primary:  226 232 240;   /* #E2E8F0 */
+    --color-text-muted:    100 116 139;   /* #64748B */
+    --color-accent:        0   229 160;   /* #00E5A0 */
+    --color-danger:        255 75  43;    /* #FF4B2B */
+  }

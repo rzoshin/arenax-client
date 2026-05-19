@@ -2,16 +2,17 @@ import {Avatar, Dropdown, Label} from "@heroui/react";
 import { GearIcon, PersonIcon, SignOutIcon } from "@phosphor-icons/react";
 import Link from "next/link";
 
-export function ProfileDropdown() {
+export function ProfileDropdown({user}) {
+  const {name, image, email} = user || {};
   return (
     <Dropdown>
       <Dropdown.Trigger className="rounded-full">
         <Avatar>
           <Avatar.Image
-            alt="Junior Garcia"
-            src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"
+            alt={name}
+            src={image}
           />
-          <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+          <Avatar.Fallback delayMs={600}>{name.charAt(0)}</Avatar.Fallback>
         </Avatar>
       </Dropdown.Trigger>
       <Dropdown.Popover>
@@ -19,27 +20,27 @@ export function ProfileDropdown() {
           <div className="flex items-center gap-2">
             <Avatar size="sm">
               <Avatar.Image
-                alt="Jane"
-                src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"
+                alt={name}
+                src={image}
               />
-              <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+              <Avatar.Fallback delayMs={600}>{name.charAt(0)}</Avatar.Fallback>
             </Avatar>
             <div className="flex flex-col gap-0">
-              <p className="text-sm leading-5 font-medium">Jane Doe</p>
-              <p className="text-xs leading-none text-muted">jane@example.com</p>
+              <p className="text-sm leading-5 font-medium">{name}</p>
+              <p className="text-xs leading-none text-muted">{email}</p>
             </div>
           </div>
         </div>
         <Dropdown.Menu>
           <Dropdown.Item id="dashboard" textValue="My Bookings">
-            <Label><Link href="/bookings">My Bookings</Link></Label>
+            <Link href="/bookings">My Bookings</Link>
           </Dropdown.Item>
           <Dropdown.Item id="profile" textValue="Add Facility">
-            <Label><Link href="/add-facility">Add Facility</Link></Label>
+            <Link href="/add-facility">Add Facility</Link>
           </Dropdown.Item>
           <Dropdown.Item id="settings" textValue="Manage Facilities">
             <div className="flex w-full items-center justify-between gap-2">
-              <Label><Link href="/manage-facility">Manage My Facilities</Link></Label>
+              <Link href="/manage-facility">Manage My Facilities</Link>
               <GearIcon className="size-3.5 text-muted" />
             </div>
           </Dropdown.Item>
