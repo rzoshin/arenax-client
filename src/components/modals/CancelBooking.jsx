@@ -8,7 +8,7 @@ export function CancelBooking({booking}) {
    const {_id, facilityName} = booking;
    const handleDelete = async () => {
 
-    const res = await fetch(`http://localhost:8000/booking/${_id}`, {
+    const res = await fetch(`http://localhost:8000/bookings/${_id}`, {
         method: 'DELETE',
         headers: {
             'content-type': 'application/json'

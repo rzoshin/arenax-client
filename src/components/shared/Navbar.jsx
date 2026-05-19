@@ -72,11 +72,11 @@ export default function Navbar() {
   const user = session?.user;
 
   return (
-    <nav className="sticky top-0 z-40 bg-[#0A0E1A] w-full backdrop-blur-lg border-b border-[#1C2438]/60">
-      <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+    <nav className="sticky top-0 z-40 bg-[#0D1520] w-full">
+      <header className="mx-auto flex h-22 max-w-7xl items-center justify-between px-6">
 
         {/* Left — hamburger + logo */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             className="md:hidden text-[#64748B] hover:text-[#E2E8F0] transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -91,8 +91,8 @@ export default function Navbar() {
               )}
             </svg>
           </button>
-
-          <Image src={logo} alt="ArenaX Logo" width={60} height={60} />
+          <Image src={logo} alt="ArenaX Logo" width={50} height={50} />
+          <h1 className="text-4xl font-bold">Arena<span className="text-[#00E5A0]">X</span></h1>
         </div>
 
         {/* Center — nav links */}
