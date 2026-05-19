@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
 
-  :root {
+  .light {
     /* LIGHT THEME */
     --color-bg-base:       255 255 255;   /* #FFFFFF */
     --color-bg-card:       241 245 249;   /* #F1F5F9 */
@@ -16,7 +16,7 @@
 
   .dark {
     /* DARK THEME */
-    --color-bg-base:       10  14  26;    /* #0A0E1A */
+    --color-bg-base:       17  24  39;  /* #0A0E1A */
     --color-bg-card:       17  24  39;    /* #111827 */
     --color-bg-input:      28  36  56;    /* #1C2438 */
     --color-bg-price:      15  23  42;    /* #0F172A */
@@ -26,3 +26,21 @@
     --color-accent:        0   229 160;   /* #00E5A0 */
     --color-danger:        255 75  43;    /* #FF4B2B */
   }
+
+  @theme {
+  --color-bg-base: rgb(var(--color-bg-base));
+  --color-bg-card: rgb(var(--color-bg-card));
+  --color-bg-input: rgb(var(--color-bg-input));
+  --color-bg-price: rgb(var(--color-bg-price));
+  --color-border: rgb(var(--color-border));
+  --color-text-primary: rgb(var(--color-text-primary));
+  --color-text-muted: rgb(var(--color-text-muted));
+  --color-accent: rgb(var(--color-accent));
+  --color-danger: rgb(var(--color-danger));
+}
+
+body, .nav, .footer {
+  background-color: rgb(var(--color-bg-base));
+  color: rgb(var(--color-text-primary));
+}
+

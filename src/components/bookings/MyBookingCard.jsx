@@ -4,10 +4,11 @@ import {
   BuildingsIcon,
   CalendarBlankIcon,
   ClockIcon,
-  CurrencyCircleDollarIcon,
   TimerIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
+import { DeleteAlert } from "../modals/DeleteAlert";
+import { CancelBooking } from "../modals/CancelBooking";
 
 
 
@@ -80,6 +81,9 @@ export function MyBookingCard({ booking }) {
           <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
             <TimerIcon size={13} /> {hours} hr{hours !== 1 ? "s" : ""}
           </span>
+          <span className="text-lg font-bold text-emerald-400">
+              ৳{Number(totalPrice).toLocaleString()}
+            </span>
         </div>
 
         {/* Footer row */}
@@ -99,10 +103,7 @@ export function MyBookingCard({ booking }) {
             </div>
           )}
           <div className="ml-auto flex items-baseline gap-1">
-            <CurrencyCircleDollarIcon size={15} className="text-emerald-400" />
-            <span className="text-lg font-bold text-emerald-400">
-              ৳{Number(totalPrice).toLocaleString()}
-            </span>
+            <CancelBooking booking={booking} />
           </div>
         </div>
       </div>

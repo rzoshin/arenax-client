@@ -3,12 +3,11 @@
 import {
   UserIcon,
   ImagesIcon,
-  PencilIcon,
-  TrashIcon,
   MapPinIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
-import { Button } from "@heroui/react";
+import { EditModal } from "../modals/EditModal";
+import { DeleteAlert } from "../modals/DeleteAlert";
 
 export function MyFacilityCard({ facility}) {
   const {
@@ -87,16 +86,8 @@ export function MyFacilityCard({ facility}) {
 
         {/* Actions */}
         <div className="flex shrink-0 flex-col justify-center gap-2 px-4 py-4">
-          <Button
-            className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-[#1C2438] px-4 py-2 text-xs font-semibold text-slate-200 transition-colors hover:border-emerald-400 hover:bg-emerald-400 hover:text-[#0A0E1A]"
-          >
-            <PencilIcon size={13} /> Update
-          </Button>
-          <Button
-            className="flex items-center gap-1.5 rounded-lg border border-red-500/30 bg-transparent px-4 py-2 text-xs font-semibold text-red-500 transition-colors hover:bg-red-500 hover:text-white"
-          >
-            <TrashIcon size={13} /> Delete
-          </Button>
+          <EditModal facility={facility} />
+          <DeleteAlert facility={facility} />
         </div>
       </article>
     </>

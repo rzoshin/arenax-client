@@ -5,6 +5,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useCallback } from "react";
 import FacilityCard from "../facilities/FacilityCard";
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
+import FeaturedCard from "./FeaturedCard";
 
 const FeaturedCarousel = ({ facilities }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -25,7 +26,7 @@ const FeaturedCarousel = ({ facilities }) => {
               key={facility._id}
               className="flex-none w-[calc((100%-2*1.5rem)/3)]" // 3 cards minus 2 gaps
             >
-              <FacilityCard facility={facility} />
+              <FeaturedCard facility={facility} />
             </div>
           ))}
         </div>

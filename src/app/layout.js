@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${sora.variable} h-full antialiased`}
     >
-      <body>
+      <body className="bg-bg-base text-text-primary border-border">
         <Providers>
           <header>
             <Navbar />

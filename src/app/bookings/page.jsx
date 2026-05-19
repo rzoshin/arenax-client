@@ -11,7 +11,7 @@ const MyBookingPage = async () => {
     const res = await fetch(`http://localhost:8000/bookings/${user?.id}`)
     const bookings = await res.json()
     return (
-        <div>
+        <div className='max-w-7xl mx-auto'>
             My Bookings
             {bookings.map((booking) => 
                 <MyBookingCard key={booking._id} booking={booking}/>

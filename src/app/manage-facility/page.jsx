@@ -1,4 +1,3 @@
-
 import MyFacilityCard from '@/components/facilities/MyFacilityCard';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';

@@ -11,6 +11,7 @@ import {
   Button,
   Card,
   Chip,
+  Form,
 } from "@heroui/react";
 
 import React from "react";
@@ -137,7 +138,7 @@ const AddFacility = () => {
             "
           />
 
-          <form
+          <Form
             onSubmit={onSubmit}
             className="p-8 md:p-12"
           >
@@ -467,7 +468,7 @@ const AddFacility = () => {
                 Add Facility
               </Button>
             </div>
-          </form>
+          </Form>
         </Card>
       </div>
     </div>
