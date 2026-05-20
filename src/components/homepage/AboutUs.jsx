@@ -32,7 +32,7 @@ const zigzagClass = {
 const AboutUs = () => {
   return (
     <section
-      className="bg-[#e95f50f9] dark:bg-[#c0392b] relative overflow-hidden py-20 px-4"
+      className="bg-[#e95f50f9] dark:bg-[#c0392b] relative overflow-hidden py-20 px-4 min-h-[80vh]"
       style={{
         backgroundImage:
           "repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 0, transparent 50%)",
@@ -44,13 +44,13 @@ const AboutUs = () => {
         ARENA
       </span>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 items-start">
 
           {/* Left — label + heading */}
           <div className="lg:w-56 shrink-0">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-white/60" />
+              <div className="w-5 h-px bg-white/60" />
               <span className="text-white/60 text-xs font-bold uppercase tracking-[0.2em]">
                 Who We Are
               </span>
@@ -69,7 +69,7 @@ const AboutUs = () => {
           {/* Right — zigzag on lg, stacked on smaller */}
           <div
             className={[
-              "flex-1 w-full",
+              "flex-1 w-[80%]",
               // Mobile / tablet: normal flex column
               "flex flex-col gap-4",
               // Large: switch to relative container with absolute-positioned cards

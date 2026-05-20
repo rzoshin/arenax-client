@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
-import { Button, DatePicker, Input, Card, Chip } from "@heroui/react";
+import {
+  Button,
+  Card,
+  Chip,
+  DatePicker,
+  Input,
+  TextField,
+} from "@heroui/react";
 import { Select, SelectItem } from "@heroui/select";
 import toast from "react-hot-toast";
-import {
-  CalendarDotsIcon, ClockIcon, CurrencyDollarIcon,
-  BuildingsIcon, TimerIcon, ArrowRightIcon,
-} from "@phosphor-icons/react";
 
 const BookingCard = ({ facility }) => {
   const { _id, facilityName, pricePerHour, availableTimeSlots } = facility;
@@ -36,13 +39,12 @@ const BookingCard = ({ facility }) => {
       status: "pending",
     };
 
-    const {data: tokenData} = await authClient.token();
-
+    const { data: tokenData } = await authClient.token();
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "authorization": `Bearer ${tokenData.token}`
+        authorization: `Bearer ${tokenData.token}`,
       },
       body: JSON.stringify(bookingData),
     });
@@ -52,107 +54,131 @@ const BookingCard = ({ facility }) => {
     toast.success("Booking request submitted!");
   };
 
-  const inputStyles = {
-    inputWrapper: "bg-input border border-border rounded-2xl h-14",
-    input: "text-primary",
-    label: "text-muted",
-  };
+  // Mirrors AddFacility inputWrapper theme
+  const inputWrapper =
+    "bg-slate-100 dark:bg-[#1C2438] border border-slate-200 dark:border-[#25304A] hover:border-emerald-400/40 dark:hover:border-[#00E5A0]/40 focus-within:!border-emerald-500 dark:focus-within:!border-[#00E5A0] rounded-2xl h-14 transition-all";
+  const inputText =
+    "text-slate-800 dark:text-[#E2E8F0] placeholder:text-slate-400 dark:placeholder:text-[#64748B]";
+  const labelClass = "text-slate-500 dark:text-[#64748B] text-sm mb-1";
 
   return (
     <div className="w-full lg:w-105 shrink-0">
-      <Card className="sticky top-24 bg-card border border-border rounded-[32px] overflow-hidden shadow-2xl shadow-black/20">
-
+      <Card className="sticky top-24 bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1C2438] rounded-[32px] overflow-hidden shadow-2xl shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-300">
         {/* TOP ACCENT */}
-        <div className="h-1.5 w-full bg-linear-to-r from-accent via-cyan-400 to-danger" />
+        <div className="h-1.5 w-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-orange-500" />
 
         <div className="p-7">
           {/* HEADER */}
           <div className="mb-8">
-            <Chip className="bg-accent/10 text-accent border border-accent/20 mb-4">
+            <Chip className="bg-emerald-100 dark:bg-[#00E5A0]/10 text-emerald-600 dark:text-[#00E5A0] border border-emerald-200 dark:border-[#00E5A0]/20 mb-4">
               Booking Form
             </Chip>
-            <h2 className="text-3xl font-bold text-primary leading-tight">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-[#E2E8F0] leading-tight">
               Reserve Your Slot
             </h2>
-            <p className="text-muted mt-2">Complete your booking in just a few clicks.</p>
+            <p className="text-slate-500 dark:text-[#64748B] mt-2">
+              Complete your booking in just a few clicks.
+            </p>
           </div>
 
-          {/* PRICE */}
-          <div className="bg-price border border-border rounded-3xl p-5 mb-8">
-            <p className="text-muted text-sm mb-1">Price Per Hour</p>
-            <h1 className="text-5xl font-bold text-accent">৳ {pricePerHour}</h1>
+          {/* PRICE DISPLAY */}
+          <div className="bg-slate-100 dark:bg-[#1C2438] border border-slate-200 dark:border-[#25304A] rounded-3xl p-5 mb-8">
+            <p className="text-slate-500 dark:text-[#64748B] text-sm mb-1">
+              Price Per Hour
+            </p>
+            <h1 className="text-5xl font-bold text-emerald-500 dark:text-[#00E5A0]">
+              ৳ {pricePerHour}
+            </h1>
           </div>
 
           {/* FORM */}
-          <form onSubmit={handleBooking} className="space-y-6">
-            <Input
-              label="Facility Name"
-              value={facilityName}
-              isReadOnly
-              startContent={<BuildingsIcon size={18} className="text-muted" />}
-              classNames={inputStyles}
-            />
+          <form onSubmit={handleBooking} className="space-y-5">
+            {/* Facility Name */}
+            <div>
+              <label className={labelClass}>Facility Name</label>
+              <Input
+                value={facilityName}
+                isReadOnly
+                classNames={{ inputWrapper, input: inputText }}
+              />
+            </div>
 
-            <DatePicker
-              label="Booking Date"
-              onChange={setBookingDate}
-              startContent={<CalendarDotsIcon size={18} className="text-muted" />}
-              classNames={inputStyles}
-            />
+            {/* Booking Date */}
+            <div>
+              <label className={labelClass}>Booking Date</label>
+              <Input
+                type="date"
+                onChange={(e) => setBookingDate(e.target.value)}
+              />
+            </div>
 
-            <Select
-              label="Time Slot"
-              placeholder="Select a slot"
-              selectedKeys={timeSlot ? [timeSlot] : []}
-              onSelectionChange={(keys) => setTimeSlot([...keys][0] ?? "")}
-              startContent={<ClockIcon size={18} className="text-muted" />}
-              items={availableTimeSlots?.map((slot) => ({ key: slot, label: slot })) ?? []}
-              classNames={{
-                trigger: "bg-input border border-border rounded-2xl h-14 text-primary",
-                label: "text-muted",
-                value: "text-primary",
-              }}
-            >
-              {(item) => <SelectItem key={item.key}>{item.label}</SelectItem>}
-            </Select>
+            {/* Time Slot */}
+            <div>
+              <label className={labelClass}>Time Slot</label>
+              <Select
+                placeholder="Select a slot"
+                selectedKeys={timeSlot ? [timeSlot] : []}
+                onSelectionChange={(keys) => setTimeSlot([...keys][0])}
+                classNames={{
+                  trigger: inputWrapper,
+                  value: "text-slate-800 dark:text-[#E2E8F0]",
+                  placeholder: "text-slate-400 dark:text-[#64748B]",
+                  popoverContent:
+                    "bg-white dark:bg-[#1C2438] border border-slate-200 dark:border-[#25304A] rounded-2xl",
+                }}
+              >
+                {(availableTimeSlots ?? []).map((slot) => (
+                  <SelectItem key={slot} value={slot}>
+                    {slot}
+                  </SelectItem>
+                ))}
+              </Select>
+            </div>
 
-            <Input
-              type="number"
-              label="Hours"
-              min={1}
-              value={String(hours)}
-              onChange={(e) => setHours(Number(e.target.value))}
-              startContent={<TimerIcon size={18} className="text-muted" />}
-              classNames={inputStyles}
-            />
+            {/* Hours */}
+            <div>
+              <label className={labelClass}>Hours</label>
+              <Input
+                type="number"
+                value={String(hours)}
+                min={1}
+                onChange={(e) => setHours(Number(e.target.value))}
+                classNames={{ inputWrapper, input: inputText }}
+              />
+            </div>
 
-            <Input
-              label="Total Price"
-              value={`৳ ${totalPrice}`}
-              isReadOnly
-              startContent={<CurrencyDollarIcon size={18} className="text-muted" />}
-              classNames={{
-                inputWrapper: "bg-price border border-accent/20 rounded-2xl h-14",
-                input: "text-accent font-bold text-lg",
-                label: "text-muted",
-              }}
-            />
+            {/* Total Price */}
+            <div>
+              <label className={labelClass}>Total Price</label>
+              <Input
+                value={`৳ ${totalPrice}`}
+                isReadOnly
+                classNames={{
+                  inputWrapper,
+                  input: `${inputText} font-semibold`,
+                }}
+              />
+            </div>
 
-            {/* STATUS */}
-            <div className="flex items-center justify-between bg-input border border-border rounded-2xl p-4">
+            {/* Booking Status */}
+            <div className="flex items-center justify-between bg-slate-100 dark:bg-[#1C2438] border border-slate-200 dark:border-[#25304A] rounded-2xl p-4">
               <div>
-                <p className="text-sm text-muted">Booking Status</p>
-                <h4 className="text-primary font-semibold capitalize">Pending</h4>
+                <p className="text-sm text-slate-500 dark:text-[#64748B]">
+                  Booking Status
+                </p>
+                <h4 className="text-slate-800 dark:text-[#E2E8F0] font-semibold capitalize">
+                  Pending
+                </h4>
               </div>
-              <Chip className="bg-danger/10 text-danger border border-danger/20">
+              <Chip className="bg-orange-100 dark:bg-orange-500/10 text-orange-500 dark:text-orange-400 border border-orange-200 dark:border-orange-500/20">
                 Pending
               </Chip>
             </div>
 
+            {/* Submit */}
             <Button
               type="submit"
-              className="w-full h-14 rounded-2xl bg-accent text-base font-bold text-[#0A0E1A] hover:scale-[1.01] hover:shadow-xl hover:shadow-accent/20 transition-all duration-300"
-              endContent={<ArrowRightIcon size={20} />}
+              className="w-full h-14 rounded-2xl bg-emerald-400 dark:bg-[#00E5A0] text-slate-900 dark:text-[#0A0E1A] font-bold text-base hover:scale-[1.01] hover:shadow-xl hover:shadow-emerald-400/20 dark:hover:shadow-[#00E5A0]/20 transition-all duration-300"
             >
               Confirm Booking
             </Button>

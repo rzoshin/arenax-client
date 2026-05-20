@@ -97,9 +97,7 @@ const AddFacility = () => {
                 <Label className={labelClass}>Facility Name</Label>
                 <Input
                   placeholder="ArenaX Football Turf"
-                  startContent={<BuildingsIcon size={18} className="text-slate-400 dark:text-[#64748B]" />}
-                  classNames={{ inputWrapper, input: inputText }}
-                />
+                  className="text-slate-400 dark:text-[#64748B]" />
                 <FieldError />
               </TextField>
 
@@ -132,7 +130,7 @@ const AddFacility = () => {
                 <Input
                   placeholder="Dhanmondi, Dhaka"
                   startContent={<MapPinIcon size={18} className="text-slate-400 dark:text-[#64748B]" />}
-                  classNames={{ inputWrapper, input: inputText }}
+
                 />
               </TextField>
 
@@ -142,7 +140,7 @@ const AddFacility = () => {
                 <Input
                   placeholder="4500"
                   startContent={<CurrencyDollarIcon size={18} className="text-slate-400 dark:text-[#64748B]" />}
-                  classNames={{ inputWrapper, input: inputText }}
+
                 />
               </TextField>
 
@@ -151,9 +149,7 @@ const AddFacility = () => {
                 <Label className={labelClass}>Capacity</Label>
                 <Input
                   placeholder="14"
-                  startContent={<UsersIcon size={18} className="text-slate-400 dark:text-[#64748B]" />}
-                  classNames={{ inputWrapper, input: inputText }}
-                />
+                  className="text-slate-400 dark:text-[#64748B]" />
               </TextField>
 
               {/* TIME SLOTS */}
@@ -161,7 +157,6 @@ const AddFacility = () => {
                 <Label className={labelClass}>Available Time Slots</Label>
                 <Input
                   placeholder="06:00 AM - 07:00 AM, 07:00 AM - 08:00 AM"
-                  startContent={<ClockIcon size={18} className="text-slate-400 dark:text-[#64748B]" />}
                   classNames={{ inputWrapper, input: inputText }}
                 />
               </TextField>
@@ -181,7 +176,6 @@ const AddFacility = () => {
                 <Label className={labelClass}>Description</Label>
                 <TextArea
                   placeholder="Describe the sports facility..."
-                  minRows={5}
                   classNames={{
                     inputWrapper:
                       "bg-slate-100 dark:bg-[#1C2438] border border-slate-200 dark:border-[#25304A] hover:border-emerald-400/40 dark:hover:border-[#00E5A0]/40 focus-within:!border-emerald-500 dark:focus-within:!border-[#00E5A0] rounded-3xl transition-all",
@@ -208,7 +202,7 @@ const AddFacility = () => {
               <Button
                 type="submit"
                 className="w-full h-14 rounded-2xl bg-emerald-400 dark:bg-[#00E5A0] text-slate-900 dark:text-[#0A0E1A] font-bold text-base hover:scale-[1.01] hover:shadow-xl hover:shadow-emerald-400/20 dark:hover:shadow-[#00E5A0]/20 transition-all duration-300"
-                startContent={<PlusCircleIcon size={22} />}
+        
               >
                 Add Facility
               </Button>

@@ -3,7 +3,6 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Link from 'next/link';
 import { CalendarPlusIcon, CalendarBlankIcon } from '@phosphor-icons/react/dist/ssr';
-import { Button } from '@heroui/react';
 
 const MyBookingPage = async () => {
     const session = await auth.api.getSession({ headers: await headers() });
@@ -58,7 +57,7 @@ const MyBookingPage = async () => {
             </div>
             <h3 className="mb-2 text-xl font-bold text-primary">No bookings yet</h3>
             <p className="mb-8 max-w-xs text-sm text-muted leading-relaxed">
-              You haven't booked any facility yet. Explore available venues and
+              You havent booked any facility yet. Explore available venues and
               lock in your first session.
             </p>
             <Link

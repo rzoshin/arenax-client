@@ -3,9 +3,10 @@
 import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 import { TrashIcon } from "@phosphor-icons/react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export function DeleteAlert({facility}) {
+  const router = useRouter();
   const {
     _id,
     facilityName,
@@ -21,7 +22,7 @@ export function DeleteAlert({facility}) {
         }
     })
     const data = await res.json();
-    redirect('/facilities');
+    router.refresh();
   };
   return (
     <AlertDialog>
