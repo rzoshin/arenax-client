@@ -23,11 +23,11 @@ const FacilityCard = ({ facility }) => {
       className="
         group
         border border-[#E2E8F0] dark:border-[#1C2438]
+        hover:border-[#1C2438]/30
         bg-white dark:bg-[#111827]
-        rounded-3xl overflow-hidden
-        hover:border-[#00E5A0]/40
-        hover:shadow-2xl hover:shadow-[#00E5A0]/10
-        transition-all duration-300
+        rounded-3xl overflow-hidden dark:hover:border-[#00E5A0]/30
+        hover:shadow-xl hover:shadow-[#00E5A0]/10
+        duration-300 transition-all
         flex flex-col
       "
     >
@@ -54,7 +54,7 @@ const FacilityCard = ({ facility }) => {
         </Chip>
 
         {/* Facility type badge */}
-        <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#00E5A0] text-[#0A0E1A] text-xs font-bold uppercase tracking-wider">
+        <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#00916A] dark:bg-[#00E5A0] text-white dark:text-[#0A0E1A] text-xs font-bold uppercase tracking-wider">
           {facilityType}
         </div>
       </div>
@@ -101,7 +101,7 @@ const FacilityCard = ({ facility }) => {
           {/* Button */}
           <Link href={`/facilities/${_id}`}>
             <Button
-              className="bg-[#00E5A0] text-[#0A0E1A] font-semibold rounded-xl px-5 hover:scale-105 transition-transform"
+              className="bg-[#00916A] dark:bg-[#00E5A0] text-white dark:text-[#0A0E1A] font-semibold rounded-xl px-5 hover:scale-105 transition-transform"
               endContent={<ArrowUpRightIcon size={18} />}
             >
               View Details

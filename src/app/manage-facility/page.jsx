@@ -10,7 +10,7 @@ const ManageFacilityPage = async () => {
 
     const {token} = await auth.api.getToken(
       {headers: await headers()});
-    const res = await fetch(`http://localhost:8000/facilities?ownerEmail=${user.email}`,
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities?ownerEmail=${user.email}`,
         {
             headers: {
       authorization: `Bearer ${token}`

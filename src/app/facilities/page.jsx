@@ -8,7 +8,7 @@ const FacilitiesPage = async ({ searchParams }) => {
   if (type) params.set("type", type);
 
   const res = await fetch(
-    `http://localhost:8000/facilities?${params.toString()}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/facilities?${params.toString()}`,
     { cache: "no-store" }
   );
   const facilities = await res.json();

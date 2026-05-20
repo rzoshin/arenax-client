@@ -12,7 +12,7 @@ const MyBookingPage = async () => {
     const {token} = await auth.api.getToken(
       {headers: await headers()});
 
-    const res = await fetch(`http://localhost:8000/bookings/${user?.id}`, 
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user?.id}`, 
         {
             headers: { authorization: `Bearer ${token}`}});
             

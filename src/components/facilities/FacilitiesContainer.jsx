@@ -75,11 +75,10 @@ const FacilitiesContainer = ({ facilities, initialSearch = "", initialType = "" 
             defaultValue={initialSearch}
             onChange={(e) => handleSearch(e.target.value)}
             className="
-              w-full h-12 pl-11 pr-4
-              bg-[#111827] border border-[#1C2438]
+              w-full h-12 pl-11 pr-4 bg-[rgba(0,160,110,0.08)] dark:bg-[#00E5A0]/10 border border-[#1C2438]
               rounded-2xl text-[#E2E8F0] placeholder:text-[#64748B]
               text-sm outline-none
-              focus:border-[#00E5A0] focus:ring-1 focus:ring-[#00E5A0]/20
+              dark:focus:border-[#00E5A0] focus:ring-1 dark:focus:ring-[#00E5A0]/20
               transition-all duration-300
             "
           />
@@ -91,10 +90,11 @@ const FacilitiesContainer = ({ facilities, initialSearch = "", initialType = "" 
           onChange={(e) => handleTypeChange(e.target.value)}
           className="
             h-12 px-4 pr-10
-            bg-[#111827] border border-[#1C2438]
-            rounded-2xl text-[#E2E8F0]
+            bg-[rgba(0,160,110,0.08)] dark:bg-[#00E5A0]/10 border border-[#1C2438]
+            rounded-2xl text-[#64748B] dark:text-[#E2E8F0]
             text-sm outline-none cursor-pointer
-            focus:border-[#00E5A0] focus:ring-1 focus:ring-[#00E5A0]/20
+            focus:border-[#007A55] focus:ring-[#007A55]/20
+            dark:focus:border-[#00E5A0] focus:ring-1 dark:focus:ring-[#00E5A0]/20
             transition-all duration-300
             appearance-none
           "
