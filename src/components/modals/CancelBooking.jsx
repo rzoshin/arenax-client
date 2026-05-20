@@ -1,17 +1,22 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 import { TrashIcon } from "@phosphor-icons/react";
 import { redirect } from "next/navigation";
 
 export function CancelBooking({booking}) {
    const {_id, facilityName} = booking;
+
    const handleDelete = async () => {
+
+    const {data: tokenData} = await authClient.token();
 
     const res = await fetch(`http://localhost:8000/bookings/${_id}`, {
         method: 'DELETE',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            authorization: `Bearer ${tokenData.token}`
         }
     })
     const data = await res.json();
