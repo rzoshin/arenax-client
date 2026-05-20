@@ -51,16 +51,16 @@ const WhyChooseUs = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Heading */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#00E5A0]/20 bg-[#00E5A0]/5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00E5A0] animate-pulse" />
-            <span className="text-[#00E5A0] text-xs font-bold uppercase tracking-[0.15em]">
-              Why ArenaX
-            </span>
-          </div>
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[rgba(0,160,110,0.30)] dark:border-[rgba(0,229,160,0.25)] bg-[rgba(0,160,110,0.08)] dark:bg-[#00E5A0]/10">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#007A55] dark:bg-[#00E5A0] animate-pulse" />
+              <span className="text-[#007A55] dark:text-[#00E5A0] text-xs font-bold uppercase tracking-[0.15em]">
+                Why ArenaX
+              </span>
+            </div>
           <h2 className="font-black leading-tight tracking-tighter"
             style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
             The Smarter Way to{" "}
-            <span className="text-[#00E5A0]">Play</span>
+            <span className="text-[#007A55] dark:text-[#00E5A0]">Play</span>
           </h2>
           <p className="text-[#64748B] mt-4 max-w-xl mx-auto text-base leading-relaxed">
             Thousands of players across Bangladesh trust ArenaX to find, book,
@@ -73,9 +73,9 @@ const WhyChooseUs = () => {
           {STATS.map(({ value, label }) => (
             <div
               key={label}
-              className=" py-8 flex flex-col items-center justify-center gap-1 hover:bg-[#0F1620] transition-colors duration-300"
+              className=" py-8 flex flex-col items-center justify-center gap-1 dark:hover:bg-[#0F1620] hover:bg-white transition-colors duration-300"
             >
-              <span className="text-[#00E5A0] font-black leading-none"
+              <span className="text-[#007A55] dark:text-[#00E5A0] font-black leading-none"
                 style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
                 {value}
               </span>
@@ -91,11 +91,11 @@ const WhyChooseUs = () => {
           {REASONS.map(({ Icon, title, body }) => (
             <div
               key={title}
-              className="group border rounded-3xl p-6 hover:border-[#00E5A0]/30 hover:shadow-xl hover:shadow-[#00E5A0]/5 transition-all duration-300"
+              className="group border bg-white dark:bg-[#111827] rounded-3xl p-6 hover:border-[#00E5A0]/30 hover:shadow-xl hover:shadow-[#00E5A0]/5 transition-all duration-300"
             >
               {/* Icon */}
-              <div className="w-11 h-11 rounded-2xl bg-[#00E5A0]/10 flex items-center justify-center mb-5 group-hover:bg-[#00E5A0]/20 transition-colors duration-300">
-                <Icon size={22} weight="bold" className="text-[#00E5A0]" />
+              <div className="w-11 h-11 rounded-2xl bg-[rgba(0,160,110,0.08)] dark:bg-[#00E5A0]/10 flex items-center justify-center mb-5 group-hover:bg-[#00E5A0]/20 transition-colors duration-300">
+                <Icon size={22} weight="bold" className="text-[#007A55] dark:text-[#00E5A0]" />
               </div>
               <h3 className="font-bold text-base mb-2 leading-snug">
                 {title}

@@ -1,46 +1,35 @@
 @import "tailwindcss";
-@import "@heroui/styles"; 
+@import "@heroui/styles";
 
-  .light {
-    /* LIGHT THEME */
-    --color-bg-base:       255 255 255;   /* #FFFFFF */
-    --color-bg-card:       241 245 249;   /* #F1F5F9 */
-    --color-bg-input:      226 232 240;   /* #E2E8F0 */
-    --color-bg-price:      248 250 252;   /* #F8FAFC */
-    --color-border:        203 213 225;   /* #CBD5E1 */
-    --color-text-primary:  15  23  42;   /* #0F172A */
-    --color-text-muted:    100 116 139;   /* #64748B */
-    --color-accent:        0   229 160;   /* #00E5A0 */
-    --color-danger:        255 75  43;    /* #FF4B2B */
-  }
-
-  .dark {
-    /* DARK THEME */
-    --color-bg-base:       17  24  39;  /* #0A0E1A */
-    --color-bg-card:       17  24  39;    /* #111827 */
-    --color-bg-input:      28  36  56;    /* #1C2438 */
-    --color-bg-price:      15  23  42;    /* #0F172A */
-    --color-border:        28  36  56;    /* #1C2438 */
-    --color-text-primary:  226 232 240;   /* #E2E8F0 */
-    --color-text-muted:    100 116 139;   /* #64748B */
-    --color-accent:        0   229 160;   /* #00E5A0 */
-    --color-danger:        255 75  43;    /* #FF4B2B */
-  }
-
-  @theme {
-  --color-bg-base: rgb(var(--color-bg-base));
-  --color-bg-card: rgb(var(--color-bg-card));
-  --color-bg-input: rgb(var(--color-bg-input));
-  --color-bg-price: rgb(var(--color-bg-price));
-  --color-border: rgb(var(--color-border));
-  --color-text-primary: rgb(var(--color-text-primary));
-  --color-text-muted: rgb(var(--color-text-muted));
-  --color-accent: rgb(var(--color-accent));
-  --color-danger: rgb(var(--color-danger));
+.light {
+  /* LIGHT THEME â€” warm slate, not blinding white */
+  --color-bg-base:       243 241 237;   /* #F3F1ED â€” warm off-white */
+  --color-bg-card:       235 232 226;   /* #EBE8E2 â€” warm cream */
+  --color-bg-input:      220 216 208;   /* #DCD8D0 â€” warm taupe input */
+  --color-bg-price:      250 248 244;   /* #FAF8F4 â€” near white for price blocks */
+  --color-border:        196 191 182;   /* #C4BFB6 â€” warm gray border */
+  --color-text-primary:  26  22  16;   /* #1A1610 â€” warm near-black */
+  --color-text-muted:    107 99  88;   /* #6B6358 â€” warm muted brown */
+  --color-accent:        #007A55;   /*  â€” stays the same */
+  --color-danger:        255 75  43;    /* #FF4B2B â€” stays the same */
 }
+
+.dark {
+  /* DARK THEME */
+  --color-bg-base:       10  14  26;   /* #0A0E1A */
+  --color-bg-card:       17  24  39;   /* #111827 */
+  --color-bg-input:      28  36  56;   /* #1C2438 */
+  --color-bg-price:      15  23  42;   /* #0F172A */
+  --color-border:        28  36  56;   /* #1C2438 */
+  --color-text-primary:  226 232 240;  /* #E2E8F0 */
+  --color-text-muted:    100 116 139;  /* #64748B */
+  --color-accent:        0   229 160;  /* #00E5A0 */
+  --color-danger:        255 75  43;   /* #FF4B2B */
+}
+
+
 
 body, .nav, .footer {
   background-color: rgb(var(--color-bg-base));
   color: rgb(var(--color-text-primary));
 }
-

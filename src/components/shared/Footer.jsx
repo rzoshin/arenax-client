@@ -1,87 +1,149 @@
 "use client";
 
-import { FacebookLogoIcon, InstagramLogoIcon, TwitterLogoIcon, YoutubeLogoIcon } from "@phosphor-icons/react";
+import Link from "next/link";
+import {
+  FacebookLogoIcon,
+  InstagramLogoIcon,
+  TwitterLogoIcon,
+  YoutubeLogoIcon,
+} from "@phosphor-icons/react";
+
+const SOCIAL = [
+  { Icon: TwitterLogoIcon,   href: "#", label: "Twitter"   },
+  { Icon: InstagramLogoIcon, href: "#", label: "Instagram" },
+  { Icon: YoutubeLogoIcon,   href: "#", label: "YouTube"   },
+  { Icon: FacebookLogoIcon,  href: "#", label: "Facebook"  },
+];
+
+const QUICK_LINKS = [
+  { label: "Home",        href: "/"                },
+  { label: "Facilities",  href: "/facilities"      },
+  { label: "My Bookings", href: "/bookings"        },
+  { label: "My Profile",  href: "/profile"         },
+];
+
+const SUPPORT_LINKS = [
+  { label: "Help Center",       href: "#" },
+  { label: "Terms of Service",  href: "#" },
+  { label: "Privacy Policy",    href: "#" },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0A0E1A] text-gray-400 px-6 md:px-16 py-16">
+    <footer className="bg-card border-border text-muted px-6 md:px-16 py-16">
       <div className="max-w-7xl mx-auto">
+
+        {/* Brand */}
         <div className="mb-12">
-          <h1 className="text-6xl md:text-7xl font-bold text-white">
+          <h2 className="text-6xl md:text-7xl font-bold text-primary leading-none">
             Arena<span className="text-[#00E5A0]">X</span>
-          </h1>
-          <p className="mt-4 max-w-xl">
-            Your gateway to extraordinary travel experiences around the world.
+          </h2>
+          <p className="mt-4 max-w-sm text-sm leading-relaxed">
+            Book football turfs, badminton courts, swimming lanes and more —
+            real-time slots, instant confirmation across Bangladesh.
           </p>
         </div>
 
-        {/* Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+
           {/* Newsletter */}
           <div>
-            <h3 className="text-white mb-3 tracking-wide">NEWSLETTER</h3>
-            <p className="mb-4 text-sm">
-              Subscribe for exclusive travel deals and inspiration.
+            <h3 className="text-primary text-xs font-bold uppercase tracking-[0.15em] mb-4">
+              Newsletter
+            </h3>
+            <p className="mb-4 text-sm leading-relaxed">
+              Subscribe for exclusive venue drops and booking deals.
             </p>
-
-            <div className="flex items-center bg-gray-800 px-4 py-3">
+            <div className="flex items-center bg-input border border-border rounded-xl overflow-hidden">
               <input
                 type="email"
                 placeholder="Enter email"
-                className="bg-transparent outline-none flex-1 text-sm"
+                className="bg-transparent outline-none flex-1 text-sm px-4 py-3 text-primary placeholder:text-muted"
               />
-              <span className="text-white text-lg">↗</span>
+              <button
+                aria-label="Subscribe"
+                className="h-full px-4 text-accent hover:bg-accent hover:text-[#0A0E1A] transition-colors duration-200"
+              >
+                ↗
+              </button>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white mb-3 tracking-wide">QUICK LINKS</h3>
-            <ul className="space-y-2">
-              <li className="hover:text-white cursor-pointer">Home</li>
-              <li className="hover:text-white cursor-pointer">Facilities</li>
-              <li className="hover:text-white cursor-pointer">My Bookings</li>
-              <li className="hover:text-white cursor-pointer">My Profile</li>
+            <h3 className="text-primary text-xs font-bold uppercase tracking-[0.15em] mb-4">
+              Quick Links
+            </h3>
+            <ul className="space-y-2 text-sm">
+              {QUICK_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="hover:text-accent transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Support */}
           <div>
-            <h3 className="text-white mb-3 tracking-wide">SUPPORT</h3>
-            <ul className="space-y-2">
-              <li className="hover:text-white cursor-pointer">Help Center</li>
-              <li className="hover:text-white cursor-pointer">
-                Terms of Service
-              </li>
-              <li className="hover:text-white cursor-pointer">
-                Privacy Policy
-              </li>
+            <h3 className="text-primary text-xs font-bold uppercase tracking-[0.15em] mb-4">
+              Support
+            </h3>
+            <ul className="space-y-2 text-sm">
+              {SUPPORT_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="hover:text-accent transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-white mb-3 tracking-wide">CONTACT US</h3>
-            <ul className="space-y-2">
+            <h3 className="text-primary text-xs font-bold uppercase tracking-[0.15em] mb-4">
+              Contact Us
+            </h3>
+            <ul className="space-y-2 text-sm">
               <li>786 901 1622</li>
-              <li>info@wandarland.com</li>
+              <li>
+                <a
+                  href="mailto:info@arenax.com"
+                  className="hover:text-accent transition-colors duration-200"
+                >
+                  info@arenax.com
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm">
-            © 2026 ArenaX. All rights reserved.
-          </p>
-
-          <div className="flex gap-5 mt-4 md:mt-0 text-white text-lg">
-            <span className="cursor-pointer"><TwitterLogoIcon /> </span>
-            <span className="cursor-pointer"><InstagramLogoIcon /></span>
-            <span className="cursor-pointer"><YoutubeLogoIcon /></span>
-            <span className="cursor-pointer"><FacebookLogoIcon/></span>
+        {/* Bottom bar */}
+        <div className="border-t border-border mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs">© 2026 ArenaX. All rights reserved.</p>
+          <div className="flex gap-4">
+            {SOCIAL.map(({ Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="text-muted hover:text-accent transition-colors duration-200"
+              >
+                <Icon size={20} />
+              </a>
+            ))}
           </div>
         </div>
+
       </div>
     </footer>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import logo from "../../../public/assets/ArenaX2.png";
+import logo from "../../../public/assets/ArenaX.png";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@heroui/react";
@@ -14,7 +14,6 @@ function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration mismatch — only render after mount
   useEffect(() => setMounted(true), []);
   if (!mounted) return <div className="w-9 h-9" />;
 
@@ -24,9 +23,9 @@ function ThemeToggle() {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-[#1C2438] bg-[#111827] text-[#64748B] transition-all hover:border-[#334155] hover:text-[#00E5A0]"
+      className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border-nav bg-card text-muted transition-all hover:border-accent/50 hover:text-accent"
     >
-      {/* Sun icon — shown in dark mode */}
+      {/* Sun — shown in dark mode */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16" height="16"
@@ -44,8 +43,7 @@ function ThemeToggle() {
         <circle cx="12" cy="12" r="4" />
         <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
       </svg>
-
-      {/* Moon icon — shown in light mode */}
+      {/* Moon — shown in light mode */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16" height="16"
@@ -68,17 +66,32 @@ function ThemeToggle() {
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-40 bg-[#0D1520] w-full">
-      <header className="mx-auto flex h-22 max-w-7xl items-center justify-between px-6">
+    <nav
+      className={`
+        sticky top-0 z-40 w-full
+        bg-nav border-b border-border-nav
+        transition-all duration-300
+        ${scrolled ? "shadow-md shadow-black/8" : "shadow-none"}
+      `}
+    >
+      <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
         {/* Left — hamburger + logo */}
         <div className="flex items-center gap-3">
           <button
-            className="md:hidden text-[#64748B] hover:text-[#E2E8F0] transition-colors"
+            className="md:hidden text-muted hover:text-primary transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
@@ -91,8 +104,10 @@ export default function Navbar() {
               )}
             </svg>
           </button>
-          <Image src={logo} alt="ArenaX Logo" width={50} height={50} />
-          <h1 className="text-4xl font-bold">Arena<span className="text-[#00E5A0]">X</span></h1>
+          <Image src={logo} alt="ArenaX Logo" width={44} height={44} />
+          <span className="text-3xl font-bold text-primary tracking-tight">
+            Arena<span className="text-[#00916A] dark:text-[#00E5A0]">X</span>
+          </span>
         </div>
 
         {/* Center — nav links */}
@@ -110,12 +125,12 @@ export default function Navbar() {
           {user ? (
             <ProfileDropdown user={user} />
           ) : (
-            <Button className="bg-[#00E5A0] text-black rounded-lg font-semibold text-sm px-5 h-9 min-w-0">
-              <Link
-              href="/login" 
-              >
+            <Button
+              as={Link}
+              href="/login"
+              className="bg-[#00916A] dark:bg-[#00E5A0] text-white dark:text-[#0A0E1A] rounded-lg font-semibold text-sm px-5 h-9 min-w-0"
+            >
               Login
-              </Link>
             </Button>
           )}
         </div>
@@ -123,14 +138,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="border-t border-[#1C2438] md:hidden">
+        <div className="border-t border-border-nav bg-nav md:hidden">
           <ul className="flex flex-col gap-1 p-4">
             <li><NavLink href="/">Home</NavLink></li>
             <li><NavLink href="/facilities">All Facilities</NavLink></li>
             <li><NavLink href="/bookings">My Bookings</NavLink></li>
             <li><NavLink href="/add-facility">Add Facility</NavLink></li>
             <li><NavLink href="/manage-facility">Manage My Facilities</NavLink></li>
-            <li className="mt-4 flex items-center gap-3 border-t border-[#1C2438] pt-4">
+            <li className="mt-4 flex items-center gap-3 border-t border-border-nav pt-4">
               <ThemeToggle />
               {user ? (
                 <ProfileDropdown user={user} />
@@ -138,7 +153,7 @@ export default function Navbar() {
                 <Button
                   as={Link}
                   href="/login"
-                  className="bg-[#00E5A0] text-black rounded-lg font-semibold text-sm flex-1 h-9"
+                  className="bg-accent text-[#0A0E1A] rounded-lg font-semibold text-sm flex-1 h-9"
                 >
                   Login
                 </Button>
@@ -150,3 +165,14 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+
+
+
+
+
+
+
+
+

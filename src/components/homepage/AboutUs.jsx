@@ -67,10 +67,10 @@ const AboutUs = () => {
             {ABOUT_CARDS.map((card) => (
               <div
                 key={card.number}
-                className="group relative bg-white/10 border border-white/20 rounded-3xl p-7 backdrop-blur-sm hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+                className="group relative bg-white/10 border border-white/20 rounded-3xl p-7 backdrop-blur-sm hover:bg-black/20 hover:border-white/40 transition-all duration-300"
               >
                 {/* Number */}
-                <span className="text-white/25 text-5xl font-black leading-none block mb-5 group-hover:text-white/40 transition-colors duration-300">
+                <span className="text-white text-5xl font-black leading-none block mb-5 transition-colors duration-300">
                   {card.number}
                 </span>
                 {/* Title */}

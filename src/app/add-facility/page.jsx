@@ -375,18 +375,6 @@ const AddFacility = () => {
                 <Input
                   type="url"
                   placeholder="https://i.ibb.co.com/example.jpg"
-                  startContent={
-                    <ImageIcon
-                      size={18}
-                      className="text-[#64748B]"
-                    />
-                  }
-                  classNames={{
-                    inputWrapper:
-                      "bg-[#1C2438] border border-[#25304A] hover:border-[#00E5A0]/40 focus-within:!border-[#00E5A0] rounded-2xl h-14",
-                    input:
-                      "text-[#E2E8F0] placeholder:text-[#64748B]",
-                  }}
                 />
 
               </TextField>
@@ -405,12 +393,7 @@ const AddFacility = () => {
                 <TextArea
                   placeholder="Describe the sports facility..."
                   minRows={5}
-                  startContent={
-                    <NotePencilIcon
-                      size={18}
-                      className="text-[#64748B] mt-1"
-                    />
-                  }
+                  
                   classNames={{
                     inputWrapper:
                       "bg-[#1C2438] border border-[#25304A] hover:border-[#00E5A0]/40 focus-within:!border-[#00E5A0] rounded-3xl",
@@ -424,7 +407,7 @@ const AddFacility = () => {
               {/* OWNER EMAIL */}
               <TextField
                 name="ownerEmail"
-                defaultValue={user.email}
+                defaultValue={user?.email}
                 isReadOnly
                 className="md:col-span-2"
               >
