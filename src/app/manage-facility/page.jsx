@@ -59,7 +59,7 @@ const ManageFacilityPage = async () => {
             </div>
             <h3 className="mb-2 text-xl font-bold text-primary">No facilities yet</h3>
             <p className="mb-8 max-w-xs text-sm text-muted leading-relaxed">
-              You haven't listed any facility yet. Add your first venue and
+              You havent listed any facility yet. Add your first venue and
               start receiving bookings today.
             </p>
             <Link

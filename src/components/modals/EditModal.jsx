@@ -27,8 +27,6 @@ import {
 } from "@phosphor-icons/react";
 
 export function EditModal({ facility }) {
-
-  
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
@@ -48,7 +46,7 @@ export function EditModal({ facility }) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const facility = Object.fromEntries(formData.entries());
+    const updatedData = Object.fromEntries(formData.entries());
 
     const {data: tokenData} = await authClient.token();
 
@@ -58,7 +56,7 @@ export function EditModal({ facility }) {
         "content-type": "application/json",
         authorization: `Bearer ${tokenData.token}`
       },
-      body: JSON.stringify(facility),
+      body: JSON.stringify(updatedData),
     });
 
     const data = await res.json();
