@@ -99,13 +99,9 @@ export default function Navbar() {
         <ul className="hidden items-center gap-1 md:flex">
           <li><NavLink href="/">Home</NavLink></li>
           <li><NavLink href="/facilities">All Facilities</NavLink></li>
-          {user && (
-            <>
-              <li><NavLink href="/bookings">My Bookings</NavLink></li>
-              <li><NavLink href="/add-facility">Add Facility</NavLink></li>
-              <li><NavLink href="/manage-facility">Manage My Facilities</NavLink></li>
-            </>
-          )}
+          <li><NavLink href="/bookings">My Bookings</NavLink></li>
+          <li><NavLink href="/add-facility">Add Facility</NavLink></li>
+          <li><NavLink href="/manage-facility">Manage My Facilities</NavLink></li>
         </ul>
 
         {/* Right — theme toggle + auth */}
@@ -131,13 +127,9 @@ export default function Navbar() {
           <ul className="flex flex-col gap-1 p-4">
             <li><NavLink href="/">Home</NavLink></li>
             <li><NavLink href="/facilities">All Facilities</NavLink></li>
-            {user && (
-              <>
-                <li><NavLink href="/bookings">My Bookings</NavLink></li>
-                <li><NavLink href="/add-facility">Add Facility</NavLink></li>
-                <li><NavLink href="/manage-facility">Manage My Facilities</NavLink></li>
-              </>
-            )}
+            <li><NavLink href="/bookings">My Bookings</NavLink></li>
+            <li><NavLink href="/add-facility">Add Facility</NavLink></li>
+            <li><NavLink href="/manage-facility">Manage My Facilities</NavLink></li>
             <li className="mt-4 flex items-center gap-3 border-t border-[#1C2438] pt-4">
               <ThemeToggle />
               {user ? (

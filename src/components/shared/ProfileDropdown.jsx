@@ -1,8 +1,12 @@
-import {Avatar, Dropdown, Label} from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
+import {Avatar, Button, Dropdown, Label} from "@heroui/react";
 import { GearIcon, PersonIcon, SignOutIcon } from "@phosphor-icons/react";
 import Link from "next/link";
 
 export function ProfileDropdown({user}) {
+  const handleSignOut = async() => {
+    await authClient.signOut()
+};
   const {name, image, email} = user || {};
   return (
     <Dropdown>
@@ -46,7 +50,7 @@ export function ProfileDropdown({user}) {
           </Dropdown.Item>
           <Dropdown.Item id="logout" textValue="Logout" variant="danger">
             <div className="flex w-full items-center justify-between gap-2">
-              <Label>Log Out</Label>
+              <Button onClick={handleSignOut}>Log Out</Button>
               <SignOutIcon className="size-3.5 text-danger" />
             </div>
           </Dropdown.Item>

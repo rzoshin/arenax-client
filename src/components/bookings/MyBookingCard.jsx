@@ -1,16 +1,16 @@
 "use client";
+
 import { Chip } from "@heroui/react";
+
 import {
   BuildingsIcon,
   CalendarBlankIcon,
   ClockIcon,
   TimerIcon,
 } from "@phosphor-icons/react";
+
 import Image from "next/image";
-import { DeleteAlert } from "../modals/DeleteAlert";
 import { CancelBooking } from "../modals/CancelBooking";
-
-
 
 export function MyBookingCard({ booking }) {
   const {
@@ -23,7 +23,6 @@ export function MyBookingCard({ booking }) {
     userImage    = null,
     userName     = null,
   } = booking;
-
 
   const formattedDate = bookingDate
     ? new Date(bookingDate).toLocaleDateString("en-GB", {

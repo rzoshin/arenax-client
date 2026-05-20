@@ -6,9 +6,17 @@ import { PlusCircle } from '@phosphor-icons/react/dist/ssr';
 
 const ManageFacilityPage = async () => {
     const session = await auth.api.getSession({ headers: await headers() });
-    const user = session?.user;
+    const user = session?.user;    
 
-    const res = await fetch(`http://localhost:8000/facilities?ownerEmail=${user.email}`);
+    const {token} = await auth.api.getToken(
+      {headers: await headers()});
+    const res = await fetch(`http://localhost:8000/facilities?ownerEmail=${user.email}`,
+        {
+            headers: {
+      authorization: `Bearer ${token}`
+    }
+        }
+    );
     const facilities = await res.json();
 
     return (
