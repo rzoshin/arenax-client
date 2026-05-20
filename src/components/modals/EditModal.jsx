@@ -25,6 +25,8 @@ import {
   PlusCircleIcon,
   UsersIcon,
 } from "@phosphor-icons/react";
+import { redirect, useRouter } from "next/navigation";
+
 
 export function EditModal({ facility }) {
   const { data: session } = authClient.useSession();
@@ -42,6 +44,7 @@ export function EditModal({ facility }) {
     availableTimeSlots
   } = facility;
 
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,8 +63,12 @@ export function EditModal({ facility }) {
     });
 
     const data = await res.json();
+    // Todo: revalidation
+    if(data.modifiedCount > 0){
+        router.refresh();
+        redirect('/manage-facility');
+    }
 
-    console.log(data);
   };
   return (
     <Modal>
@@ -229,7 +236,7 @@ export function EditModal({ facility }) {
                       name="availableTimeSlots"
                       isRequired
                       className="md:col-span-2"
-                      defaultValue={availableTimeSlots?.join(", ")}
+                      defaultValue={availableTimeSlots[0]}
                     >
                       <Label className="text-[#E2E8F0] mb-2">
                         Available Time Slots
@@ -320,6 +327,7 @@ export function EditModal({ facility }) {
                   <div className="mt-10">
                     <Button
                       type="submit"
+                      slot="close"
                       className="
                                   w-full
                                   h-14

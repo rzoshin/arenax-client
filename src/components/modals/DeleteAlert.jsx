@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 import { TrashIcon } from "@phosphor-icons/react";
 import { redirect } from "next/navigation";
