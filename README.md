@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/assets/ArenaX2.png" alt="ArenaX Logo" width="100" />
+<img src="public/assets/ArenaX.png" alt="ArenaX Logo" width="100" />
 
 # ArenaX
 
