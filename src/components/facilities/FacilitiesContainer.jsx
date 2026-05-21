@@ -4,7 +4,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import ReactPaginate from "react-paginate";
 import FacilityCard from "@/components/facilities/FacilityCard";
-import { MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { FunnelIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 const FACILITY_TYPES = [
   "All",
@@ -101,7 +101,7 @@ const FacilitiesContainer = ({ facilities, initialSearch = "", initialType = "" 
         >
           {FACILITY_TYPES.map((type) => (
             <option key={type} value={type === "All" ? "" : type}>
-              {type}
+               <FunnelIcon /> {type}
             </option>
           ))}
         </select>

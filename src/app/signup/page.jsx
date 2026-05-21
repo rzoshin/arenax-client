@@ -42,7 +42,7 @@ export default function RegisterPage() {
       console.log(data, error);
       if (data) {
         toast.success("Account created successfully!");
-        redirect("/");
+        redirect("/login");
       }
       if (error) {
         toast.error(error.message || "An error occurred during registration");
@@ -116,13 +116,13 @@ export default function RegisterPage() {
           {/* Password */}
           <TextField
             isRequired
-            minLength={8}
+            minLength={6}
             name="password"
             type="password"
             validate={(value) => {
-              if (value.length < 8) return "Password must be at least 8 characters";
+              if (value.length < 6) return "Password must be at least 6 characters";
               if (!/[A-Z]/.test(value)) return "Must contain at least one uppercase letter";
-              if (!/[0-9]/.test(value)) return "Must contain at least one number";
+              if (!/[a-z]/.test(value)) return "Must contain at least one lowercase letter";
               return null;
             }}
           >

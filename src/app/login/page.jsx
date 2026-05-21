@@ -121,13 +121,13 @@ export default function LoginPage() {
             {/* Password */}
             <TextField
               isRequired
-              minLength={8}
+              minLength={6}
               name="password"
               type="password"
               validate={(v) => {
-                if (v.length < 8) return "Password must be at least 8 characters";
+                if (v.length < 6) return "Password must be at least 6 characters";
                 if (!/[A-Z]/.test(v)) return "Must contain at least one uppercase letter";
-                if (!/[0-9]/.test(v)) return "Must contain at least one number";
+                if (!/[a-z]/.test(v)) return "Must contain at least one lowercase letter";
                 return null;
               }}
             >
