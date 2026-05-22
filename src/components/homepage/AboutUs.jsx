@@ -22,7 +22,6 @@ const ABOUT_CARDS = [
   },
 ];
 
-// Zigzag offsets only apply on lg+; on smaller screens cards stack normally
 const zigzagClass = {
   "bottom-left":  "lg:absolute lg:left-0 lg:bottom-0",
   "top-center":   "lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0",
@@ -32,15 +31,18 @@ const zigzagClass = {
 const AboutUs = () => {
   return (
     <section
-      className="bg-[#e95f50f9] dark:bg-[#c0392b] relative overflow-hidden py-20 px-4 min-h-[80vh]"
+      className="bg-gray-50 dark:bg-[#0A0E1A] relative overflow-hidden py-20 px-4 min-h-[80vh]"
       style={{
         backgroundImage:
-          "repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 0, transparent 50%)",
+          "repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0, rgba(0,0,0,0.03) 1px, transparent 0, transparent 50%)",
         backgroundSize: "12px 12px",
       }}
     >
       {/* Watermark */}
-      <span className="absolute right-0 bottom-10 text-[180px] font-black text-white/5 leading-none select-none pointer-events-none tracking-tighter pr-4 hidden lg:block">
+      <span
+        className="absolute right-0 bottom-10 text-[180px] font-black leading-none select-none pointer-events-none tracking-tighter pr-4 hidden lg:block
+          text-black/[0.03] dark:text-[#00E5A0]/[0.04]"
+      >
         ARENA
       </span>
 
@@ -50,35 +52,26 @@ const AboutUs = () => {
           {/* Left — label + heading */}
           <div className="lg:w-56 shrink-0">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-5 h-px bg-white/60" />
-              <span className="text-white/60 text-xs font-bold uppercase tracking-[0.2em]">
+              <div className="w-5 h-px bg-[#007A55] dark:bg-[#00E5A0] opacity-70" />
+              <span className="text-[#007A55] dark:text-[#00E5A0] text-xs font-bold uppercase tracking-[0.2em] opacity-80">
                 Who We Are
               </span>
             </div>
             <h2
-              className="text-white font-black leading-none tracking-tighter"
+              className="text-gray-900 dark:text-[#E2E8F0] font-black leading-none tracking-tighter"
               style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
             >
               ABOUT
               <br />
               US
             </h2>
-            <div className="mt-6 w-12 h-1.5 bg-white rounded-full" />
+            <div className="mt-6 w-12 h-1.5 bg-[#007A55] dark:bg-[#00E5A0] rounded-full" />
           </div>
 
-          {/* Right — zigzag on lg, stacked on smaller */}
+          {/* Right — zigzag cards */}
           <div
-            className={[
-              "flex-1 w-[80%]",
-              // Mobile / tablet: normal flex column
-              "flex flex-col gap-4",
-              // Large: switch to relative container with absolute-positioned cards
-              "lg:relative lg:flex-none lg:block",
-            ].join(" ")}
-            // Height only matters when cards are absolutely positioned (lg+)
-            style={{ "--lg-h": "380px" }}
+            className="flex-1 w-[80%] flex flex-col gap-4 lg:relative lg:flex-none lg:block"
           >
-            {/* Inject lg height via a small style tag so it only applies at lg */}
             <style>{`
               @media (min-width: 1024px) {
                 .zigzag-container { height: 380px; }
@@ -91,27 +84,46 @@ const AboutUs = () => {
                   key={card.number}
                   className={[
                     "group",
-                    // Mobile: full width; md: side-by-side; lg: absolute zigzag
-                    "w-full md:w-auto",
-                    "lg:w-[31%]",
+                    "w-full md:w-auto lg:w-[31%]",
                     zigzagClass[card.position],
-                    "bg-white/10 border border-white/20 rounded-3xl p-6 md:p-7",
-                    "backdrop-blur-sm",
-                    "hover:bg-black/20 hover:border-white/40",
+                    // Light: white card with gray border
+                    // Dark: #111827 card with mint border
+                    "bg-white dark:bg-[#111827]",
+                    "border border-gray-200 dark:border-[#00E5A0]/15",
+                    "hover:border-[#007A55]/40 dark:hover:border-[#00E5A0]/40",
+                    "hover:bg-gray-50 dark:hover:bg-[#1C2438]",
+                    "rounded-3xl p-6 md:p-7",
                     "transition-all duration-300",
-                    "relative", // needed for the hover underline pseudo
+                    "relative overflow-hidden",
                   ].join(" ")}
                 >
-                  <span className="text-white text-4xl md:text-5xl font-black leading-none block mb-4 md:mb-5">
-                    {card.number}
+                  {/* Number — dark mint outline on light, bright mint outline on dark */}
+                  <span
+                    className="text-4xl md:text-5xl font-black leading-none block mb-4 md:mb-5
+                      text-transparent"
+                    style={{
+                      WebkitTextStroke: "1.5px",
+                      // CSS variable trick so Tailwind dark mode can control stroke color
+                    }}
+                  >
+                    <span
+                      className="[--stroke:#007A55] dark:[--stroke:#00E5A0]"
+                      style={{ WebkitTextStroke: "1.5px var(--stroke)" }}
+                    >
+                      {card.number}
+                    </span>
                   </span>
-                  <h3 className="text-white text-sm md:text-base font-bold mb-2 md:mb-3 leading-snug">
+
+                  <h3 className="text-gray-900 dark:text-[#E2E8F0] text-sm md:text-base font-bold mb-2 md:mb-3 leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-white/70 text-sm leading-relaxed">
+
+                  <p className="text-[#64748B] text-sm leading-relaxed">
                     {card.body}
                   </p>
-                  <div className="absolute bottom-0 left-6 right-6 lg:left-7 lg:right-7 h-px bg-white/0 group-hover:bg-white/20 transition-all duration-300 rounded-full" />
+
+                  {/* Arena Red bottom accent on hover */}
+                  <div className="absolute bottom-0 left-6 right-6 lg:left-7 lg:right-7 h-px bg-[#FF4B2B] rounded-full opacity-0 group-hover:opacity-60 transition-all duration-300" />
                 </div>
               ))}
             </div>

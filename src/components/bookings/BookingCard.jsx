@@ -6,9 +6,9 @@ import {
   Button,
   Card,
   Chip,
-  DatePicker,
+
   Input,
-  TextField,
+
 } from "@heroui/react";
 import { Select, SelectItem } from "@heroui/select";
 import toast from "react-hot-toast";
@@ -97,9 +97,8 @@ const BookingCard = ({ facility }) => {
             <div>
               <label className={labelClass}>Facility Name</label>
               <Input
-                value={facilityName}
+                defaultValue={facilityName}
                 isReadOnly
-                classNames={{ inputWrapper, input: inputText }}
               />
             </div>
 
@@ -158,21 +157,6 @@ const BookingCard = ({ facility }) => {
                   input: `${inputText} font-semibold`,
                 }}
               />
-            </div>
-
-            {/* Booking Status */}
-            <div className="flex items-center justify-between bg-slate-100 dark:bg-[#1C2438] border border-slate-200 dark:border-[#25304A] rounded-2xl p-4">
-              <div>
-                <p className="text-sm text-slate-500 dark:text-[#64748B]">
-                  Booking Status
-                </p>
-                <h4 className="text-slate-800 dark:text-[#E2E8F0] font-semibold capitalize">
-                  Pending
-                </h4>
-              </div>
-              <Chip className="bg-orange-100 dark:bg-orange-500/10 text-orange-500 dark:text-orange-400 border border-orange-200 dark:border-orange-500/20">
-                Pending
-              </Chip>
             </div>
 
             {/* Submit */}

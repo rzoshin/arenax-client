@@ -18,12 +18,7 @@ import React from "react";
 import toast from "react-hot-toast";
 
 import {
-  BuildingsIcon,
   CurrencyDollarIcon,
-  MapPinIcon,
-  UsersIcon,
-  ClockIcon,
-  PlusCircleIcon,
 } from "@phosphor-icons/react";
 import { authClient } from "@/lib/auth-client";
 
@@ -87,7 +82,7 @@ const AddFacility = () => {
         <Card className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1C2438] rounded-[32px] shadow-xl shadow-slate-200/60 dark:shadow-black/30 overflow-hidden transition-colors duration-300">
 
           {/* TOP ACCENT */}
-          <div className="h-1.5 w-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-orange-500" />
+          <div className="h-1.5 w-full bg-linear-to-r from-emerald-400 via-cyan-400 to-orange-500" />
 
           <Form onSubmit={onSubmit} className="p-6 sm:p-8 md:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -129,8 +124,6 @@ const AddFacility = () => {
                 <Label className={labelClass}>Location</Label>
                 <Input
                   placeholder="Dhanmondi, Dhaka"
-                  startContent={<MapPinIcon size={18} className="text-slate-400 dark:text-[#64748B]" />}
-
                 />
               </TextField>
 
@@ -157,7 +150,7 @@ const AddFacility = () => {
                 <Label className={labelClass}>Available Time Slots</Label>
                 <Input
                   placeholder="06:00 AM - 07:00 AM, 07:00 AM - 08:00 AM"
-                  classNames={{ inputWrapper, input: inputText }}
+
                 />
               </TextField>
 
@@ -167,7 +160,7 @@ const AddFacility = () => {
                 <Input
                   type="url"
                   placeholder="https://i.ibb.co.com/example.jpg"
-                  classNames={{ inputWrapper, input: inputText }}
+
                 />
               </TextField>
 
@@ -176,11 +169,7 @@ const AddFacility = () => {
                 <Label className={labelClass}>Description</Label>
                 <TextArea
                   placeholder="Describe the sports facility..."
-                  classNames={{
-                    inputWrapper:
-                      "bg-slate-100 dark:bg-[#1C2438] border border-slate-200 dark:border-[#25304A] hover:border-emerald-400/40 dark:hover:border-[#00E5A0]/40 focus-within:!border-emerald-500 dark:focus-within:!border-[#00E5A0] rounded-3xl transition-all",
-                    input: inputText,
-                  }}
+
                 />
               </TextField>
 
@@ -188,11 +177,7 @@ const AddFacility = () => {
               <TextField name="ownerEmail" defaultValue={user?.email} isReadOnly className="md:col-span-2">
                 <Label className={labelClass}>Owner Email</Label>
                 <Input
-                  classNames={{
-                    inputWrapper:
-                      "bg-slate-100 dark:bg-[#0F172A] border border-slate-200 dark:border-[#25304A] rounded-2xl h-14 opacity-70",
-                    input: "text-slate-500 dark:text-[#94A3B8]",
-                  }}
+
                 />
               </TextField>
             </div>
