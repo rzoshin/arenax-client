@@ -41,7 +41,7 @@ const AboutUs = () => {
       {/* Watermark */}
       <span
         className="absolute right-0 bottom-10 text-[180px] font-black leading-none select-none pointer-events-none tracking-tighter pr-4 hidden lg:block
-          text-black/[0.03] dark:text-[#00E5A0]/[0.04]"
+          text-black/3 dark:text-[#00E5A0]/4"
       >
         ARENA
       </span>

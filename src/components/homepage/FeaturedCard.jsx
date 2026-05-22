@@ -45,7 +45,7 @@ const FeaturedCard = ({ facility }) => {
         <Chip
           size="sm"
           className="absolute left-3 top-3 bg-white/10 backdrop-blur-md text-[#E2E8F0] border border-white/10"
-          startContent={<MapPinIcon size={14} />}
+          
         >
           {location}
         </Chip>

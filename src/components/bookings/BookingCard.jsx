@@ -65,7 +65,7 @@ const BookingCard = ({ facility }) => {
     <div className="w-full lg:w-105 shrink-0">
       <Card className="sticky top-24 bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1C2438] rounded-[32px] overflow-hidden shadow-2xl shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-300">
         {/* TOP ACCENT */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-orange-500" />
+        <div className="h-1.5 w-full bg-linear-to-r from-emerald-400 via-cyan-400 to-orange-500" />
 
         <div className="p-7">
           {/* HEADER */}

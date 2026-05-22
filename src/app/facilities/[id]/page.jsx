@@ -66,7 +66,7 @@ const FacilityDetailsPage = async ({ params }) => {
       </div>
 
       {/* Hero image */}
-      <div className="relative w-full h-[340px] sm:h-[420px] lg:h-[500px] overflow-hidden">
+      <div className="relative w-full h-85 sm:h-105 lg:h-125 overflow-hidden">
         <Image
           src={image}
           alt={facilityName}
@@ -75,7 +75,7 @@ const FacilityDetailsPage = async ({ params }) => {
           priority
         />
         {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#060A10]/80 via-[#060A10]/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#060A10]/80 via-[#060A10]/20 to-transparent" />
 
         {/* Facility type badge on image */}
         <div className="absolute bottom-6 left-6 flex items-center gap-3">
@@ -94,7 +94,7 @@ const FacilityDetailsPage = async ({ params }) => {
             <div className="flex items-center gap-1.5 text-[#64748B] text-sm mb-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 flex-shrink-0"
+                className="h-4 w-4 shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -196,7 +196,7 @@ const FacilityDetailsPage = async ({ params }) => {
           </div>
 
           {/* RIGHT — booking card */}
-          <div className="w-full lg:w-[340px] flex-shrink-0">
+          <div className="w-full lg:w-85 shrink-0">
             <div className="sticky top-24">
               <BookingCard facility={facility} />
             </div>

@@ -101,7 +101,7 @@ const FacilitiesContainer = ({ facilities, initialSearch = "", initialType = "" 
         >
           {FACILITY_TYPES.map((type) => (
             <option key={type} value={type === "All" ? "" : type}>
-               <FunnelIcon /> {type}
+              {type}
             </option>
           ))}
         </select>
