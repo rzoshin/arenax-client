@@ -4,7 +4,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import ReactPaginate from "react-paginate";
 import FacilityCard from "@/components/facilities/FacilityCard";
-import { FunnelIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 const FACILITY_TYPES = [
   "All",

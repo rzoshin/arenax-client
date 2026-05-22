@@ -45,6 +45,7 @@ export function EditModal({ facility }) {
   } = facility;
 
   const router = useRouter();
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,7 +69,6 @@ export function EditModal({ facility }) {
         router.refresh();
         redirect('/manage-facility');
     }
-
   };
   return (
     <Modal>
@@ -220,9 +220,6 @@ export function EditModal({ facility }) {
 
                       <Input
                         placeholder="14"
-                        startContent={
-                          <UsersIcon size={18} className="text-[#64748B]" />
-                        }
                         classNames={{
                           inputWrapper:
                             "bg-[#1C2438] border border-[#25304A] hover:border-[#00E5A0]/40 focus-within:!border-[#00E5A0] rounded-2xl h-14",
@@ -244,9 +241,6 @@ export function EditModal({ facility }) {
 
                       <Input
                         placeholder="06:00 AM - 07:00 AM, 07:00 AM - 08:00 AM"
-                        startContent={
-                          <ClockIcon size={18} className="text-[#64748B]" />
-                        }
                         classNames={{
                           inputWrapper:
                             "bg-[#1C2438] border border-[#25304A] hover:border-[#00E5A0]/40 focus-within:!border-[#00E5A0] rounded-2xl h-14",
@@ -267,9 +261,6 @@ export function EditModal({ facility }) {
                       <Input
                         type="url"
                         placeholder="https://i.ibb.co.com/example.jpg"
-                        startContent={
-                          <ImageIcon size={18} className="text-[#64748B]" />
-                        }
                         classNames={{
                           inputWrapper:
                             "bg-[#1C2438] border border-[#25304A] hover:border-[#00E5A0]/40 focus-within:!border-[#00E5A0] rounded-2xl h-14",
@@ -288,14 +279,7 @@ export function EditModal({ facility }) {
                       <Label className="text-[#E2E8F0] mb-2">Description</Label>
 
                       <TextArea
-                        placeholder="Describe the sports facility..."
-                        minRows={5}
-                        startContent={
-                          <NotePencilIcon
-                            size={18}
-                            className="text-[#64748B] mt-1"
-                          />
-                        }
+                        placeholder="Describe the sports facility..."                        
                         classNames={{
                           inputWrapper:
                             "bg-[#1C2438] border border-[#25304A] hover:border-[#00E5A0]/40 focus-within:!border-[#00E5A0] rounded-3xl",
@@ -342,7 +326,6 @@ export function EditModal({ facility }) {
                                   transition-all
                                   duration-300
                                 "
-                      startContent={<PlusCircleIcon size={22} />}
                     >
                       Edit Facility
                     </Button>
