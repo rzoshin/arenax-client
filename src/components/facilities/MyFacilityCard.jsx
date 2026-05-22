@@ -23,7 +23,7 @@ export function MyFacilityCard({ facility }) {
   return (
     <article className="group relative flex flex-col sm:flex-row overflow-hidden rounded-xl border border-white/10 bg-[#111827] shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl">
       {/* Top gradient bar on hover */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-emerald-400 to-orange-500 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-emerald-400 to-orange-500 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
       {/* Image */}
       <div className="relative h-48 sm:h-auto sm:w-44 shrink-0 overflow-hidden bg-[#1C2438]">

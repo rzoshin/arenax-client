@@ -50,7 +50,7 @@ export function ProfileDropdown({user}) {
           </Dropdown.Item>
           <Dropdown.Item id="logout" textValue="Logout" variant="danger">
             <div className="flex w-full items-center justify-between gap-2">
-              <Button onClick={handleSignOut}>Log Out</Button>
+              <Button className="bg-[#00916A] dark:bg-[#00E5A0] text-white dark:text-[#0A0E1A]" onClick={handleSignOut}>Log Out</Button>
               <SignOutIcon className="size-3.5 text-danger" />
             </div>
           </Dropdown.Item>

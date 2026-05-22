@@ -20,7 +20,6 @@ function ThemeToggle() {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border-nav bg-card text-muted transition-all hover:border-accent/50 hover:text-accent"
     >
-      {/* Sun — shown in dark mode */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16" height="16"
@@ -38,7 +37,6 @@ function ThemeToggle() {
         <circle cx="12" cy="12" r="4" />
         <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
       </svg>
-      {/* Moon — shown in light mode */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16" height="16"
@@ -105,7 +103,7 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Center — nav links */}
+        {/* Center — nav links (desktop only) */}
         <ul className="hidden items-center gap-1 md:flex">
           <li><NavLink href="/">Home</NavLink></li>
           <li><NavLink href="/facilities">All Facilities</NavLink></li>
@@ -114,8 +112,8 @@ export default function Navbar() {
           <li><NavLink href="/manage-facility">Manage My Facilities</NavLink></li>
         </ul>
 
-        {/* Right — theme toggle + auth */}
-        <div className="hidden items-center gap-3 md:flex">
+        {/* Right — theme toggle + auth (always visible on all screen sizes) */}
+        <div className="flex items-center gap-3">
           <ThemeToggle />
           {user ? (
             <ProfileDropdown user={user} />
@@ -131,7 +129,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — nav links only */}
       {isMenuOpen && (
         <div className="border-t border-border-nav bg-nav md:hidden">
           <ul className="flex flex-col gap-1 p-4">
@@ -140,34 +138,9 @@ export default function Navbar() {
             <li><NavLink href="/bookings">My Bookings</NavLink></li>
             <li><NavLink href="/add-facility">Add Facility</NavLink></li>
             <li><NavLink href="/manage-facility">Manage My Facilities</NavLink></li>
-            <li className="mt-4 flex items-center gap-3 border-t border-border-nav pt-4">
-              <ThemeToggle />
-              {user ? (
-                <ProfileDropdown user={user} />
-              ) : (
-                <Button
-                  as={Link}
-                  href="/login"
-                  className="bg-accent text-[#0A0E1A] rounded-lg font-semibold text-sm flex-1 h-9"
-                >
-                  Login
-                </Button>
-              )}
-            </li>
           </ul>
         </div>
       )}
     </nav>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
